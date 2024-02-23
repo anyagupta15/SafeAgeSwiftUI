@@ -14,10 +14,11 @@
 		7F76F8BF2B57205000F0175F /* AmbulanceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8BE2B57205000F0175F /* AmbulanceCall.swift */; };
 		7F76F8C12B57960900F0175F /* HeartRateHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C02B57960900F0175F /* HeartRateHistoryView.swift */; };
 		7F76F8C32B57A28900F0175F /* LabBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C22B57A28900F0175F /* LabBook.swift */; };
-		7F76F8C52B57B1B800F0175F /* DateandTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C42B57B1B800F0175F /* DateandTime.swift */; };
 		7F76F8C92B57BAFE00F0175F /* manualFilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C82B57BAFE00F0175F /* manualFilling.swift */; };
 		7F76F8CB2B57D10B00F0175F /* HealthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */; };
 		7F76F8CD2B58085300F0175F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8CC2B58085300F0175F /* Settings.swift */; };
+		7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */; };
+		7F7FABE82B85F87200F8E86E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */; };
 		7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5CE52B583ACA00B57FE7 /* Eco.swift */; };
 		7FDE8D672B55406900C4E5E9 /* SafeAgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */; };
 		7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D682B55406900C4E5E9 /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 		7FDE8D772B55446200C4E5E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D762B55446200C4E5E9 /* PageView.swift */; };
 		7FDE8D7F2B55C10F00C4E5E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D7E2B55C10F00C4E5E9 /* LoginView.swift */; };
 		7FDE8D812B55C90F00C4E5E9 /* signup_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D802B55C90F00C4E5E9 /* signup_page.swift */; };
+		7FDFCA982B8745ED0040AF92 /* LoginApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFCA972B8745ED0040AF92 /* LoginApple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +39,12 @@
 		7F76F8BE2B57205000F0175F /* AmbulanceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbulanceCall.swift; sourceTree = "<group>"; };
 		7F76F8C02B57960900F0175F /* HeartRateHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateHistoryView.swift; sourceTree = "<group>"; };
 		7F76F8C22B57A28900F0175F /* LabBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabBook.swift; sourceTree = "<group>"; };
-		7F76F8C42B57B1B800F0175F /* DateandTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateandTime.swift; sourceTree = "<group>"; };
 		7F76F8C82B57BAFE00F0175F /* manualFilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manualFilling.swift; sourceTree = "<group>"; };
 		7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProfile.swift; sourceTree = "<group>"; };
 		7F76F8CC2B58085300F0175F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
+		7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		7F7FABE92B85FF9100F8E86E /* SafeAge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeAge.entitlements; sourceTree = "<group>"; };
 		7F8C5CE52B583ACA00B57FE7 /* Eco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco.swift; sourceTree = "<group>"; };
 		7FDE8D632B55406900C4E5E9 /* SafeAge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeAge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAgeApp.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 		7FDE8D762B55446200C4E5E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		7FDE8D7E2B55C10F00C4E5E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7FDE8D802B55C90F00C4E5E9 /* signup_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signup_page.swift; sourceTree = "<group>"; };
+		7FDFCA972B8745ED0040AF92 /* LoginApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +88,18 @@
 		7FDE8D652B55406900C4E5E9 /* SafeAge */ = {
 			isa = PBXGroup;
 			children = (
+				7F7FABE92B85FF9100F8E86E /* SafeAge.entitlements */,
 				7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */,
 				7FDE8D742B5541D000C4E5E9 /* PageModel.swift */,
 				7FDE8D762B55446200C4E5E9 /* PageView.swift */,
 				7FDE8D7E2B55C10F00C4E5E9 /* LoginView.swift */,
-				7F76F8C42B57B1B800F0175F /* DateandTime.swift */,
 				7F76F8B82B57027B00F0175F /* CallingView.swift */,
 				7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */,
+				7FDFCA972B8745ED0040AF92 /* LoginApple.swift */,
 				7F76F8CC2B58085300F0175F /* Settings.swift */,
 				7F76F8C82B57BAFE00F0175F /* manualFilling.swift */,
+				7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */,
+				7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */,
 				7F76F8BC2B571BCA00F0175F /* tabbar.swift */,
 				7F76F8C22B57A28900F0175F /* LabBook.swift */,
 				7F76F8B22B565BC800F0175F /* MainPage.swift */,
@@ -185,10 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F76F8C52B57B1B800F0175F /* DateandTime.swift in Sources */,
 				7F76F8B12B55D77E00F0175F /* demoView.swift in Sources */,
 				7F76F8BF2B57205000F0175F /* AmbulanceCall.swift in Sources */,
 				7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */,
+				7F7FABE82B85F87200F8E86E /* HealthKitManager.swift in Sources */,
 				7F76F8CD2B58085300F0175F /* Settings.swift in Sources */,
 				7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */,
 				7FDE8D772B55446200C4E5E9 /* PageView.swift in Sources */,
@@ -197,12 +205,14 @@
 				7F76F8B32B565BC800F0175F /* MainPage.swift in Sources */,
 				7FDE8D752B5541D000C4E5E9 /* PageModel.swift in Sources */,
 				7F76F8C12B57960900F0175F /* HeartRateHistoryView.swift in Sources */,
+				7FDFCA982B8745ED0040AF92 /* LoginApple.swift in Sources */,
 				7F76F8C32B57A28900F0175F /* LabBook.swift in Sources */,
 				7FDE8D7F2B55C10F00C4E5E9 /* LoginView.swift in Sources */,
 				7F76F8B92B57027B00F0175F /* CallingView.swift in Sources */,
 				7F76F8BD2B571BCA00F0175F /* tabbar.swift in Sources */,
 				7FDE8D812B55C90F00C4E5E9 /* signup_page.swift in Sources */,
 				7FDE8D672B55406900C4E5E9 /* SafeAgeApp.swift in Sources */,
+				7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,23 +343,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeAge/SafeAge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeAge/Preview Content\"";
-				DEVELOPMENT_TEAM = Z635FTQXTP;
+				DEVELOPMENT_TEAM = 5CG2FMA8V7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to use all the features of the application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeAge;
+				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -362,23 +375,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeAge/SafeAge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeAge/Preview Content\"";
-				DEVELOPMENT_TEAM = Z635FTQXTP;
+				DEVELOPMENT_TEAM = 5CG2FMA8V7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to use all the features of the application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeAge;
+				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
