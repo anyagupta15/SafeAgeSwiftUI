@@ -4,18 +4,15 @@ import HealthKit
 struct MainPage: View {
     @State private var isActionSheetPresented = false
     @State private var userName = "Rohan"
-    @State private var selectedAction: Int? = nil
     @State private var progressValue: Float = 0.5
-    @State private var showAlert = false
-    @State private var isPresentingdemoView = false
     @State private var isShowingDialog = false
     @State private var showActionButtonMenu = false
-    @State private var showingambulancecall  = false
-    @State private var showingNextScreen  = false
+    @State private var showingambulancecall = false
+    @State private var showingNextScreen = false
     @State private var showingHeartRateHistory = false
     @State private var showingmanualFilling = false
     @StateObject private var healthDataManager = HealthDataManager()
-    // Set the initial progress value
+    
     var body: some View {
         VStack {
             HStack{
@@ -24,6 +21,16 @@ struct MainPage: View {
                     .bold()
                     .padding(.bottom, 1)
                 Spacer()
+                Button(action: {
+                                        // Generate and share link action
+                                        // Add your logic here to generate and share the link
+                                        shareLink()
+                                    }) {
+                                        Image(systemName: "square.and.arrow.up")
+                                            .font(.title)
+                                            .foregroundColor(.blue)
+                                    }
+                                    .padding(.trailing, 20)
             }
             
             HStack {
@@ -79,20 +86,14 @@ struct MainPage: View {
                                     .padding(.trailing, 10)
                             }
                             Text("Heart Rate")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                            
-                            }
-                            
-                           // ProgressView(value: progressValue)
-                             //   .progressViewStyle(LinearProgressViewStyle())
-                              //  .padding()
-                            
-                            Text("\(Int(progressValue * 100)) bpm")
-                                .foregroundColor(.black)
-                                .padding()
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-                    padding()
+                        .padding()
+                        
+                        Text("\(Int(progressValue * 100)) bpm")
+                            .foregroundColor(.black)
+                            .padding()
                     }
                     .onTapGesture {
                         showingHeartRateHistory.toggle()
@@ -101,36 +102,31 @@ struct MainPage: View {
                 
                 // Steps
                 VStack {
-                    ZStack{
+                    ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .frame(height: 150)
                             .foregroundColor(Color.green.opacity(0.8))
                         
-                        VStack((alignment: .leading, spacing: 10) )
-                        HStack {
-                            Image(systemName: "figure.walk")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .padding(.trailing, 10)
-                        }
-                        Text("Steps")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                                    
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Image(systemName: "figure.walk")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .padding(.trailing, 10)
                             }
-                            
-                            //ProgressView(value: healthDataManager.stepCountProgress)
-                            //    .progressViewStyle(LinearProgressViewStyle())
-                              //  .padding()
-                            
-                            Text("\(healthDataManager.stepCount) Steps")
-                                .foregroundColor(.black)
-                                .padding()
+                            Text("Steps")
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-            padding()
+                        
+                        Text("\(healthDataManager.stepCount) Steps")
+                            .foregroundColor(.black)
+                            .padding()
                     }
+                    .padding()
                 }
             }
+            .padding(.bottom, 30)
             
             HStack {
                 // Temperature
@@ -149,16 +145,10 @@ struct MainPage: View {
                                     .foregroundColor(.white)
                                     .padding(.trailing, 10)
                             }
-                              
+                            
                             Text("Temp")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                                //.padding(.trailing, 10)
-                            
-                            
-//                            ProgressView(value: healthDataManager.temperatureProgress)
-//                                .progressViewStyle(LinearProgressViewStyle())
-//                                .padding()
+                                .foregroundColor(.white)
+                                .font(.title2)
                             
                             Text("\(Int(healthDataManager.temperature * 100)) C")
                                 .foregroundColor(.white)
@@ -168,15 +158,14 @@ struct MainPage: View {
                         .padding()
                     }
                 }
-                
-                // Blood Pressure
+                 // Blood Pressure
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .frame(height: 150)
                             .foregroundColor(Color.orange.opacity(0.8))
                         
-                        VStack (alignment: .leading, spacing: 10){
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Image(systemName: "drop.triangle.fill")
                                     .resizable()
@@ -184,23 +173,18 @@ struct MainPage: View {
                                     .padding(.trailing, 10)
                             }
                             Text("Blood Pressure")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                            }
-                            
-                           // ProgressView(value: healthDataManager.bloodPressureProgress)
-                               // .progressViewStyle(LinearProgressViewStyle())
-                            //    .padding()
-                            
-                            Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
-                                .foregroundColor(.black)
-                                .padding()
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-                    padding()
+                        
+                        Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
+                            .foregroundColor(.black)
+                            .padding()
                     }
+                    .padding()
                 }
             }
-            
+            .padding(.bottom, 30)
             
             HStack {
                 // Sleep
@@ -210,7 +194,7 @@ struct MainPage: View {
                             .frame(height: 150)
                             .foregroundColor(Color.pink.opacity(0.8))
                         
-                        VStack (alignment: .leading, spacing: 10){
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Image(systemName: "bed.double.circle.fill")
                                     .resizable()
@@ -218,20 +202,15 @@ struct MainPage: View {
                                     .padding(.trailing, 10)
                             }
                             Text("Sleep")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                            }
-                            
-                            //ProgressView(value: healthDataManager.sleepProgress)
-                              //  .progressViewStyle(LinearProgressViewStyle())
-                               // .padding()
-                            
-                            Text("\(Int(healthDataManager.sleepHours)) hrs")
-                                .foregroundColor(.black)
-                                .padding()
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-                    padding()
+                        
+                        Text("\(Int(healthDataManager.sleepHours)) hrs")
+                            .foregroundColor(.black)
+                            .padding()
                     }
+                    .padding()
                 }
                 
                 // Stress
@@ -241,7 +220,7 @@ struct MainPage: View {
                             .frame(height: 150)
                             .foregroundColor(Color.green.opacity(0.8))
                         
-                        VStack(alignment: .leading, spacing: 10){
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Image(systemName: "light.min")
                                     .resizable()
@@ -249,92 +228,78 @@ struct MainPage: View {
                                     .padding(.trailing, 10)
                             }
                             Text("Stress")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                                                        }
-                            
-                           // ProgressView(value: healthDataManager.stressProgress)
-                               // .progressViewStyle(LinearProgressViewStyle())
-                                //.padding()
-                            
-                            Text("\(Int(healthDataManager.stressLevel)) HRV")
-                                .foregroundColor(.black)
-                                .padding()
+                                .foregroundColor(.white)
+                                .font(.title2)
                         }
-                    padding()
+                        
+                        Text("\(Int(healthDataManager.stressLevel)) HRV")
+                            .foregroundColor(.black)
+                            .padding()
                     }
+                    .padding()
                 }
             }
-           
-    
+            .padding(.bottom, 30)
             
-            .onAppear {
-                            if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
-                                isShowingDialog = true
-                            } else if healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 {
-                                isShowingDialog = true
-                            } else if healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 {
-                                isShowingDialog = true
-                            }else if healthDataManager.stressLevel > 80 {
-                                isShowingDialog = true
-                            }
-                            healthDataManager.requestHealthData()
-                        }
-                        // Present the dialog when isShowingDialog is true
-                        .alert(isPresented: $isShowingDialog) {
-                            Alert(
-                                title: Text("Alert!"),
-                                message: alertMessage(),
-                                primaryButton: .default(Text("Action")) {
-                                    // Add your action for Button 1
-                                    print("Button 1 pressed")
-                                    // Show the action sheet
-                                    showActionButtonMenu = true
-                                },
-                                secondaryButton: .destructive(Text("Dismiss")) {
-                                    // Add your action for Button 2
-                                    print("Dismiss")
-                                }
-                            )
-                        }
-            .actionSheet(isPresented: $showActionButtonMenu) {
-                ActionSheet(title: Text("Choose an action"), buttons: [
-                    .default(Text("Call Ambulance")) {
-                        showingambulancecall.toggle()
-                        print("Calling ambulance")
-                    },
-                    .default(Text("Call Saved Contact")) {
-                        showingNextScreen.toggle()
-                        print("Calling saved contact")
-                    },
-                    .default(Text("Book Lab Appointment")) {
-                        showingmanualFilling.toggle()
-                        print("Booking lab appointment")
-                    },
-                    .cancel()
-                ])
-            }
-            NavigationLink(destination: CallingView(), isActive: $showingNextScreen) {
-                EmptyView()
-            }
-            NavigationLink(destination: AmbulanceCall(), isActive: $showingambulancecall) {
-                EmptyView()
-            }
-            NavigationLink(destination: LabBook(), isActive: $showingmanualFilling) {
-                EmptyView()
-            }
-            // Adjust the bottom padding of the TabView
-        
         }
-        
+        .onAppear {
+            if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 ||
+               healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 ||
+               healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 ||
+               healthDataManager.stressLevel > 80 {
+                isShowingDialog = true
+            }
+            healthDataManager.requestHealthData()
+        }
+        .alert(isPresented: $isShowingDialog) {
+            Alert(
+                title: Text("Alert!"),
+                message: alertMessage(),
+                primaryButton: .default(Text("Action")) {
+                    showActionButtonMenu = true
+                },
+                secondaryButton: .destructive(Text("Dismiss")) {
+                    print("Dismiss")
+                }
+            )
+        }
+        .actionSheet(isPresented: $showActionButtonMenu) {
+            ActionSheet(title: Text("Choose an action"), buttons: [
+                .default(Text("Call Ambulance")) {
+                    showingambulancecall.toggle()
+                },
+                .default(Text("Call Saved Contact")) {
+                    showingNextScreen.toggle()
+                },
+                .default(Text("Book Lab Appointment")) {
+                    showingmanualFilling.toggle()
+                },
+                .cancel()
+            ])
+        }
         .navigationBarBackButtonHidden(true)
         .padding() // Add padding to the whole VStack
     }
+    
     func formattedDate() -> String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd, yyyy"
-            return formatter.string(from: Date())
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd, yyyy"
+        return formatter.string(from: Date())
+    }
+    func shareLink() {
+        // Generate the link to be shared
+        let sharedLink = "https://example.com/your-data" // Replace with your actual link
+        
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: [sharedLink], applicationActivities: nil)
+        
+        // Configure activityViewController
+        activityViewController.excludedActivityTypes = [.addToReadingList, .airDrop] // Exclude specific activities if needed
+        
+        // Present the UIActivityViewController
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+    }
+
     
     func alertMessage() -> Text {
         if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
@@ -345,7 +310,7 @@ struct MainPage: View {
             return Text("Blood Pressure is out of normal range.")
         } else if healthDataManager.stressLevel > 80 {
             return Text("Stress level is high.")
-        }else {
+        } else {
             return Text("")
         }
     }
@@ -356,3 +321,5 @@ struct MainPage_Previews: PreviewProvider {
         MainPage()
     }
 }
+
+
