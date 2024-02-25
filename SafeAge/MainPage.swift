@@ -132,28 +132,35 @@ struct MainPage: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.blue.opacity(0.8))
                         
-                        VStack {
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Spacer()
                                 Image(systemName: "thermometer")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Temp")
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
                                     .padding(.trailing, 10)
                             }
+                              
+                            Text("Temp")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                                //.padding(.trailing, 10)
                             
-                            ProgressView(value: healthDataManager.temperatureProgress)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                            
+//                            ProgressView(value: healthDataManager.temperatureProgress)
+//                                .progressViewStyle(LinearProgressViewStyle())
+//                                .padding()
                             
                             Text("\(Int(healthDataManager.temperature * 100)) C")
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
+                                .font(.title3)
                                 .padding()
                         }
+                        .padding()
                     }
                 }
                 
@@ -338,4 +345,3 @@ struct MainPage_Previews: PreviewProvider {
         MainPage()
     }
 }
-
