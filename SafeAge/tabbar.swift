@@ -20,12 +20,12 @@ struct TabBar: View {
                 }
             
             // Icon 2
-            LabBook()
+            CallingView2()
                 .tabItem {
-                    Image(systemName: "calendar.badge.plus")
+                    Image(systemName: "command")
                         .resizable()
                         .frame(width: 50, height: 50) // Adjust the icon size
-                    Text("Lab Book")
+                    Text("Action Centre")
                 }
             
             // Icon3

@@ -13,12 +13,11 @@
 		7F76F8BD2B571BCA00F0175F /* tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8BC2B571BCA00F0175F /* tabbar.swift */; };
 		7F76F8BF2B57205000F0175F /* AmbulanceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8BE2B57205000F0175F /* AmbulanceCall.swift */; };
 		7F76F8C12B57960900F0175F /* HeartRateHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C02B57960900F0175F /* HeartRateHistoryView.swift */; };
-		7F76F8C32B57A28900F0175F /* LabBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C22B57A28900F0175F /* LabBook.swift */; };
-		7F76F8C92B57BAFE00F0175F /* manualFilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8C82B57BAFE00F0175F /* manualFilling.swift */; };
 		7F76F8CB2B57D10B00F0175F /* HealthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */; };
 		7F76F8CD2B58085300F0175F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8CC2B58085300F0175F /* Settings.swift */; };
 		7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */; };
 		7F7FABE82B85F87200F8E86E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */; };
+		7F807D0D2B8B53580062C605 /* CallingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F807D0C2B8B53580062C605 /* CallingView2.swift */; };
 		7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5CE52B583ACA00B57FE7 /* Eco.swift */; };
 		7FDE8D672B55406900C4E5E9 /* SafeAgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */; };
 		7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D682B55406900C4E5E9 /* ContentView.swift */; };
@@ -38,13 +37,12 @@
 		7F76F8BC2B571BCA00F0175F /* tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabbar.swift; sourceTree = "<group>"; };
 		7F76F8BE2B57205000F0175F /* AmbulanceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbulanceCall.swift; sourceTree = "<group>"; };
 		7F76F8C02B57960900F0175F /* HeartRateHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateHistoryView.swift; sourceTree = "<group>"; };
-		7F76F8C22B57A28900F0175F /* LabBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabBook.swift; sourceTree = "<group>"; };
-		7F76F8C82B57BAFE00F0175F /* manualFilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manualFilling.swift; sourceTree = "<group>"; };
 		7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProfile.swift; sourceTree = "<group>"; };
 		7F76F8CC2B58085300F0175F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		7F7FABE92B85FF9100F8E86E /* SafeAge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeAge.entitlements; sourceTree = "<group>"; };
+		7F807D0C2B8B53580062C605 /* CallingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingView2.swift; sourceTree = "<group>"; };
 		7F8C5CE52B583ACA00B57FE7 /* Eco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco.swift; sourceTree = "<group>"; };
 		7FDE8D632B55406900C4E5E9 /* SafeAge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeAge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAgeApp.swift; sourceTree = "<group>"; };
@@ -97,11 +95,10 @@
 				7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */,
 				7FDFCA972B8745ED0040AF92 /* LoginApple.swift */,
 				7F76F8CC2B58085300F0175F /* Settings.swift */,
-				7F76F8C82B57BAFE00F0175F /* manualFilling.swift */,
 				7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */,
 				7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */,
+				7F807D0C2B8B53580062C605 /* CallingView2.swift */,
 				7F76F8BC2B571BCA00F0175F /* tabbar.swift */,
-				7F76F8C22B57A28900F0175F /* LabBook.swift */,
 				7F76F8B22B565BC800F0175F /* MainPage.swift */,
 				7F8C5CE52B583ACA00B57FE7 /* Eco.swift */,
 				7F76F8BE2B57205000F0175F /* AmbulanceCall.swift */,
@@ -201,12 +198,11 @@
 				7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */,
 				7FDE8D772B55446200C4E5E9 /* PageView.swift in Sources */,
 				7F76F8CB2B57D10B00F0175F /* HealthProfile.swift in Sources */,
-				7F76F8C92B57BAFE00F0175F /* manualFilling.swift in Sources */,
 				7F76F8B32B565BC800F0175F /* MainPage.swift in Sources */,
 				7FDE8D752B5541D000C4E5E9 /* PageModel.swift in Sources */,
+				7F807D0D2B8B53580062C605 /* CallingView2.swift in Sources */,
 				7F76F8C12B57960900F0175F /* HeartRateHistoryView.swift in Sources */,
 				7FDFCA982B8745ED0040AF92 /* LoginApple.swift in Sources */,
-				7F76F8C32B57A28900F0175F /* LabBook.swift in Sources */,
 				7FDE8D7F2B55C10F00C4E5E9 /* LoginView.swift in Sources */,
 				7F76F8B92B57027B00F0175F /* CallingView.swift in Sources */,
 				7F76F8BD2B571BCA00F0175F /* tabbar.swift in Sources */,

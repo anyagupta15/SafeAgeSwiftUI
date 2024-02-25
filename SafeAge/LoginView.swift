@@ -79,7 +79,7 @@ struct LoginView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
                 //.padding(.top, 20)
-                NavigationLink(destination: MainPage(), isActive: $showingNextScreen) {
+                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
                     EmptyView()
                 }
                 

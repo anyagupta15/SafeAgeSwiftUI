@@ -11,6 +11,7 @@ struct MainPage: View {
     @State private var showingNextScreen = false
     @State private var showingHeartRateHistory = false
     @State private var showingmanualFilling = false
+    @State private var showingcallingview2 = false
     @StateObject private var healthDataManager = HealthDataManager()
     
     var body: some View {
@@ -71,7 +72,7 @@ struct MainPage: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .frame(height: 150)
-                            .foregroundColor(Color.red.opacity(0.8))
+                            .foregroundColor(Color.green.opacity(0.8))
                         
                         VStack (alignment: .leading, spacing: 10) {
                             HStack {
@@ -79,54 +80,66 @@ struct MainPage: View {
                                     EmptyView()
                                 }
                                 .hidden()
-                                
+                                Spacer()
                                 Image(systemName: "heart.circle.fill")
                                     .resizable()
                                     .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
                                     .padding(.trailing, 10)
                             }
                             Text("Heart Rate")
                                 .foregroundColor(.white)
+                                .bold()
                                 .font(.title2)
-                        }
-                        .padding()
-                        
-                        Text("\(Int(progressValue * 100)) bpm")
-                            .foregroundColor(.black)
-                            .padding()
+                            
+                            //  .padding()
+                            
+                            Text("\(Int(progressValue * 100)) bpm")
+                                .foregroundColor(.white)
+                               // .padding()
+                                .font(.title3)
+                        }.padding()
                     }
                     .onTapGesture {
                         showingHeartRateHistory.toggle()
                     }
                 }
                 
+                
+                
                 // Steps
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .frame(height: 150)
-                            .foregroundColor(Color.green.opacity(0.8))
+                            .foregroundColor(Color.purple.opacity(0.8))
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Spacer()
                                 Image(systemName: "figure.walk")
                                     .resizable()
                                     .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
                                     .padding(.trailing, 10)
                             }
                             Text("Steps")
+                                .bold()
                                 .foregroundColor(.white)
                                 .font(.title2)
+                            
+                            
+                            Text("\(healthDataManager.stepCount) ")
+                                .foregroundColor(.white)
+                                .font(.title3)
+                                //.padding()
+                            
                         }
-                        
-                        Text("\(healthDataManager.stepCount) Steps")
-                            .foregroundColor(.black)
-                            .padding()
+                        .padding()
                     }
-                    .padding()
                 }
             }
-            .padding(.bottom, 30)
+            .padding(.bottom, 15)
             
             HStack {
                 // Temperature
@@ -147,13 +160,14 @@ struct MainPage: View {
                             }
                             
                             Text("Temp")
+                                .bold()
                                 .foregroundColor(.white)
                                 .font(.title2)
                             
                             Text("\(Int(healthDataManager.temperature * 100)) C")
                                 .foregroundColor(.white)
                                 .font(.title3)
-                                .padding()
+                                //.padding()
                         }
                         .padding()
                     }
@@ -167,24 +181,30 @@ struct MainPage: View {
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Spacer()
                                 Image(systemName: "drop.triangle.fill")
                                     .resizable()
                                     .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
                                     .padding(.trailing, 10)
                             }
                             Text("Blood Pressure")
+                                .bold()
                                 .foregroundColor(.white)
                                 .font(.title2)
+                            
+                            
+                            Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
+                                .foregroundColor(.white)
+                                .font(.title3)
+                                //.padding()
+                                
                         }
-                        
-                        Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
-                            .foregroundColor(.black)
-                            .padding()
+                        .padding()
                     }
-                    .padding()
                 }
             }
-            .padding(.bottom, 30)
+            .padding(.bottom, 15)
             
             HStack {
                 // Sleep
@@ -196,47 +216,56 @@ struct MainPage: View {
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Spacer()
                                 Image(systemName: "bed.double.circle.fill")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
+                                    .foregroundColor(.white)
                             }
                             Text("Sleep")
+                                .bold()
                                 .foregroundColor(.white)
                                 .font(.title2)
+                            
+                            
+                            Text("\(Int(healthDataManager.sleepHours)) hrs")
+                                .foregroundColor(.white)
+                                .font(.title3)
+                            //.padding()
                         }
-                        
-                        Text("\(Int(healthDataManager.sleepHours)) hrs")
-                            .foregroundColor(.black)
-                            .padding()
+                        .padding()
                     }
-                    .padding()
                 }
-                
                 // Stress
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .frame(height: 150)
-                            .foregroundColor(Color.green.opacity(0.8))
+                            .foregroundColor(Color.red.opacity(0.8))
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Spacer()
                                 Image(systemName: "light.min")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
+                                    .foregroundColor(.white)
                             }
                             Text("Stress")
+                                .bold()
                                 .foregroundColor(.white)
                                 .font(.title2)
+                            
+                            
+                            Text("\(Int(healthDataManager.stressLevel)) HRV")
+                                .foregroundColor(.white)
+                                .font(.title3)
+                                //.padding()
                         }
-                        
-                        Text("\(Int(healthDataManager.stressLevel)) HRV")
-                            .foregroundColor(.black)
-                            .padding()
+                        .padding()
                     }
-                    .padding()
                 }
             }
             .padding(.bottom, 30)
@@ -266,17 +295,31 @@ struct MainPage: View {
         .actionSheet(isPresented: $showActionButtonMenu) {
             ActionSheet(title: Text("Choose an action"), buttons: [
                 .default(Text("Call Ambulance")) {
-                    showingambulancecall.toggle()
+                    showingNextScreen.toggle()
+                    // Check if other properties should be updated here
+                    print("Calling ambulance")
                 },
                 .default(Text("Call Saved Contact")) {
                     showingNextScreen.toggle()
+                    // Check if other properties should be updated here
+                    print("Calling saved contact")
                 },
-                .default(Text("Book Lab Appointment")) {
-                    showingmanualFilling.toggle()
-                },
+              //  .default(Text("Book Lab Appointment")) {
+                 //   showingmanualFilling.toggle()
+                 //   // Check if other properties should be updated here
+                  //  print("Booking lab appointment")
+               // },
                 .cancel()
             ])
         }
+        NavigationLink(destination: CallingView2(), isActive: $showingNextScreen) {
+            EmptyView()
+        }
+        NavigationLink(destination: CallingView2(), isActive: $showingNextScreen) {
+            EmptyView()
+        }
+        
+
         .navigationBarBackButtonHidden(true)
         .padding() // Add padding to the whole VStack
     }
