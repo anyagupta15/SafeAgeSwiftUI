@@ -63,10 +63,10 @@ struct MainPage: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.red.opacity(0.8))
                         
-                        VStack {
+                        VStack (alignment: .leading, spacing: 10) {
                             HStack {
                                 NavigationLink(destination: HeartRateHistoryView(), isActive: $showingHeartRateHistory) {
                                     EmptyView()
@@ -75,21 +75,24 @@ struct MainPage: View {
                                 
                                 Image(systemName: "heart.circle.fill")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Heart Rate")
+                                    .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
                             }
+                            Text("Heart Rate")
+                            .foregroundColor(.white)
+                            .font(.title2)
                             
-                            ProgressView(value: progressValue)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                            }
+                            
+                           // ProgressView(value: progressValue)
+                             //   .progressViewStyle(LinearProgressViewStyle())
+                              //  .padding()
                             
                             Text("\(Int(progressValue * 100)) bpm")
                                 .foregroundColor(.black)
                                 .padding()
                         }
+                    padding()
                     }
                     .onTapGesture {
                         showingHeartRateHistory.toggle()
@@ -100,32 +103,34 @@ struct MainPage: View {
                 VStack {
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.green.opacity(0.8))
                         
-                        VStack{
-                            HStack {
-                                Image(systemName: "figure.walk")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Steps")
-                                    .padding(.trailing, 10)
+                        VStack((alignment: .leading, spacing: 10) )
+                        HStack {
+                            Image(systemName: "figure.walk")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .padding(.trailing, 10)
+                        }
+                        Text("Steps")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                                    
                             }
                             
-                            ProgressView(value: healthDataManager.stepCountProgress)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                            //ProgressView(value: healthDataManager.stepCountProgress)
+                            //    .progressViewStyle(LinearProgressViewStyle())
+                              //  .padding()
                             
                             Text("\(healthDataManager.stepCount) Steps")
                                 .foregroundColor(.black)
                                 .padding()
                         }
+            padding()
                     }
                 }
             }
-            .padding(.bottom, 30)
             
             HStack {
                 // Temperature
@@ -168,60 +173,64 @@ struct MainPage: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.orange.opacity(0.8))
                         
-                        VStack {
+                        VStack (alignment: .leading, spacing: 10){
                             HStack {
                                 Image(systemName: "drop.triangle.fill")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Blood Pressure")
+                                    .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
                             }
+                            Text("Blood Pressure")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            }
                             
-                            ProgressView(value: healthDataManager.bloodPressureProgress)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                           // ProgressView(value: healthDataManager.bloodPressureProgress)
+                               // .progressViewStyle(LinearProgressViewStyle())
+                            //    .padding()
                             
                             Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
                                 .foregroundColor(.black)
                                 .padding()
                         }
+                    padding()
                     }
                 }
             }
-            .padding(.bottom, 30)
+            
             
             HStack {
                 // Sleep
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.pink.opacity(0.8))
                         
-                        VStack {
+                        VStack (alignment: .leading, spacing: 10){
                             HStack {
                                 Image(systemName: "bed.double.circle.fill")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Sleep")
+                                    .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
                             }
+                            Text("Sleep")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            }
                             
-                            ProgressView(value: healthDataManager.sleepProgress)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                            //ProgressView(value: healthDataManager.sleepProgress)
+                              //  .progressViewStyle(LinearProgressViewStyle())
+                               // .padding()
                             
                             Text("\(Int(healthDataManager.sleepHours)) hrs")
                                 .foregroundColor(.black)
                                 .padding()
                         }
+                    padding()
                     }
                 }
                 
@@ -229,32 +238,34 @@ struct MainPage: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 180, height: 160)
-                            .foregroundColor(Color.frontrect)
+                            .frame(height: 150)
+                            .foregroundColor(Color.green.opacity(0.8))
                         
-                        VStack {
+                        VStack(alignment: .leading, spacing: 10){
                             HStack {
                                 Image(systemName: "light.min")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.leading, 20)
-                                Spacer()
-                                Text("Stress")
+                                    .frame(width: 40, height: 40)
                                     .padding(.trailing, 10)
                             }
+                            Text("Stress")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                                                        }
                             
-                            ProgressView(value: healthDataManager.stressProgress)
-                                .progressViewStyle(LinearProgressViewStyle())
-                                .padding()
+                           // ProgressView(value: healthDataManager.stressProgress)
+                               // .progressViewStyle(LinearProgressViewStyle())
+                                //.padding()
                             
                             Text("\(Int(healthDataManager.stressLevel)) HRV")
                                 .foregroundColor(.black)
                                 .padding()
                         }
+                    padding()
                     }
                 }
             }
-            .padding(.bottom, 30)
+           
     
             
             .onAppear {
