@@ -1,13 +1,9 @@
-//
-//  tabbar.swift
-//  SafeAge
-//
-//  Created by user1 on 17/01/24.
-//
-
 import SwiftUI
 
 struct TabBar: View {
+    // Constant for icon size
+    private let iconSize: CGFloat = 50
+
     var body: some View {
         TabView {
             // Icon 1
@@ -15,31 +11,28 @@ struct TabBar: View {
                 .tabItem {
                     Image(systemName: "house.fill")
                         .resizable()
-                        .frame(width: 90, height: 50) // Adjust the icon size
+                        .frame(width: iconSize, height: iconSize)
                     Text("Home")
                 }
-            
+
             // Icon 2
             CallingView2()
                 .tabItem {
                     Image(systemName: "command")
                         .resizable()
-                        .frame(width: 50, height: 50) // Adjust the icon size
+                        .frame(width: iconSize, height: iconSize)
                     Text("Action Centre")
                 }
-            
+
             // Icon3
-            SettingsView()
+            SharingView()
                 .tabItem {
-                    Image(systemName: "gearshape")
+                    Image(systemName: "square.and.arrow.up.circle")
                         .resizable()
-                        .frame(width: 50, height: 50)
-                    // Adjust the icon size
-                    Text("Settings")
+                        .frame(width: iconSize, height: iconSize)
+                    Text("Share")
                 }
         }
-        .navigationBarBackButtonHidden(true)
-        //.padding()
     }
 }
 

@@ -12,7 +12,7 @@ import SwiftUI
 struct SafeAgeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
         }
     }
 }

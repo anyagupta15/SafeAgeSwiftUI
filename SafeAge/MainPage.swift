@@ -12,6 +12,9 @@ struct MainPage: View {
     @State private var showingHeartRateHistory = false
     @State private var showingmanualFilling = false
     @State private var showingcallingview2 = false
+    @State private var isCallingView2Presented = false
+
+
     @StateObject private var healthDataManager = HealthDataManager()
     
     var body: some View {
@@ -35,18 +38,17 @@ struct MainPage: View {
             }
             
             HStack {
-                Text("Hi \(userName)!")
+                
+                Text("Hi Rani !")
                     .font(.title)
                     .bold()
                 Spacer()
-                Button(action: {
-                    // Show the action sheet when the button is tapped
-                    isActionSheetPresented = true
-                }) {
+                NavigationLink(destination: SettingsView()) {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.title)
                         .foregroundColor(.blue)
                 }
+                
                 .actionSheet(isPresented: $isActionSheetPresented) {
                     ActionSheet(title: Text("Select a Profile View"), buttons: [
                         .default(Text("Priya")) {
@@ -277,6 +279,7 @@ struct MainPage: View {
                healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 ||
                healthDataManager.stressLevel > 80 {
                 isShowingDialog = true
+                
             }
             healthDataManager.requestHealthData()
         }
@@ -295,13 +298,14 @@ struct MainPage: View {
         .actionSheet(isPresented: $showActionButtonMenu) {
             ActionSheet(title: Text("Choose an action"), buttons: [
                 .default(Text("Call Ambulance")) {
-                    showingNextScreen.toggle()
                     // Check if other properties should be updated here
+                    isCallingView2Presented = true
                     print("Calling ambulance")
                 },
                 .default(Text("Call Saved Contact")) {
-                    showingNextScreen.toggle()
+                    
                     // Check if other properties should be updated here
+                    isCallingView2Presented = true
                     print("Calling saved contact")
                 },
               //  .default(Text("Book Lab Appointment")) {
@@ -311,13 +315,20 @@ struct MainPage: View {
                // },
                 .cancel()
             ])
+            
+            
         }
-        NavigationLink(destination: CallingView2(), isActive: $showingNextScreen) {
-            EmptyView()
+        .sheet(isPresented: $isCallingView2Presented) {
+            CallingView2()
         }
-        NavigationLink(destination: CallingView2(), isActive: $showingNextScreen) {
-            EmptyView()
-        }
+ 
+        
+//        NavigationLink(destination: CallingView2(), isActive: $navigateToSharingView) {
+//            EmptyView()
+//        }
+
+
+
         
 
         .navigationBarBackButtonHidden(true)

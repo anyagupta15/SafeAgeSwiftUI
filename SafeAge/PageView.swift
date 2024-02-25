@@ -17,11 +17,11 @@ struct PageView: View {
                 .scaledToFit()
                 .padding()
                 .cornerRadius(30)
-                .background(.gray.opacity(0.10))
                 .cornerRadius(10)
                 .padding()
             
             Text(page.name)
+                .bold()
                 .font(.title)
             
             Text(page.description)
