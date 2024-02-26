@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct signup_page: View {
+    @StateObject var loginData = LoginViewModel()
     @State private var email = ""
     @State private var password = ""
     @State private var showingNextScreen = false
@@ -57,9 +59,36 @@ struct signup_page: View {
                 NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
                     EmptyView()
                 }
+                //login button
+                SignInWithAppleButton{ (request) in
+                    loginData.nonce = randomNonceString()
+                    request.requestedScopes = [.email,.fullName]
+                    request.nonce = sha256(loginData.nonce)
+                } onCompletion:{(result) in
+                    switch result{
+                    case.success(let user):
+                        print("success")
+                        guard let credential = user.credential as? ASAuthorizationAppleIDCredential else{
+                            print("error with firebase")
+                            return
+                        }
+                        loginData.aunthenticate(credential: credential)
+                    case.failure(let error):
+                        print(error.localizedDescription)
+                        
+                    }
+                    
+                    
+                }
+                .signInWithAppleButtonStyle(.white)
+                .frame(height:55)
+                .clipShape(Capsule())
+                .padding(.horizontal,40)
+                .offset(y: -55)
                 
             }
             .navigationBarHidden(true)
+               
         }
         }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F013ED62B8BABFE0062A2B7 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F013ED52B8BABFE0062A2B7 /* SplashView.swift */; };
 		7F013ED82B8BB4120062A2B7 /* SharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F013ED72B8BB4120062A2B7 /* SharingView.swift */; };
+		7F013EDA2B8C55BA0062A2B7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F013ED92B8C55BA0062A2B7 /* LoginViewModel.swift */; };
 		7F76F8B12B55D77E00F0175F /* demoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8B02B55D77E00F0175F /* demoView.swift */; };
 		7F76F8B32B565BC800F0175F /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8B22B565BC800F0175F /* MainPage.swift */; };
 		7F76F8B92B57027B00F0175F /* CallingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76F8B82B57027B00F0175F /* CallingView.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		7F013ED52B8BABFE0062A2B7 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		7F013ED72B8BB4120062A2B7 /* SharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingView.swift; sourceTree = "<group>"; };
+		7F013ED92B8C55BA0062A2B7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7F76F8B02B55D77E00F0175F /* demoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoView.swift; sourceTree = "<group>"; };
 		7F76F8B22B565BC800F0175F /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		7F76F8B82B57027B00F0175F /* CallingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 				7F76F8B82B57027B00F0175F /* CallingView.swift */,
 				7F76F8CA2B57D10B00F0175F /* HealthProfile.swift */,
 				7FDFCA972B8745ED0040AF92 /* LoginApple.swift */,
+				7F013ED92B8C55BA0062A2B7 /* LoginViewModel.swift */,
+				7FDE8D802B55C90F00C4E5E9 /* signup_page.swift */,
 				7F013ED72B8BB4120062A2B7 /* SharingView.swift */,
 				7F76F8CC2B58085300F0175F /* Settings.swift */,
 				7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */,
@@ -110,7 +114,6 @@
 				7F76F8C02B57960900F0175F /* HeartRateHistoryView.swift */,
 				7F76F8B02B55D77E00F0175F /* demoView.swift */,
 				7FDE8D682B55406900C4E5E9 /* ContentView.swift */,
-				7FDE8D802B55C90F00C4E5E9 /* signup_page.swift */,
 				7FDE8D6A2B55406C00C4E5E9 /* Assets.xcassets */,
 				7FDE8D6C2B55406C00C4E5E9 /* Preview Content */,
 				7F013ED52B8BABFE0062A2B7 /* SplashView.swift */,
@@ -198,6 +201,7 @@
 			files = (
 				7F013ED82B8BB4120062A2B7 /* SharingView.swift in Sources */,
 				7F76F8B12B55D77E00F0175F /* demoView.swift in Sources */,
+				7F013EDA2B8C55BA0062A2B7 /* LoginViewModel.swift in Sources */,
 				7F76F8BF2B57205000F0175F /* AmbulanceCall.swift in Sources */,
 				7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */,
 				7F7FABE82B85F87200F8E86E /* HealthKitManager.swift in Sources */,
@@ -351,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeAge/Preview Content\"";
-				DEVELOPMENT_TEAM = 5CG2FMA8V7;
+				DEVELOPMENT_TEAM = 8BA47GYXAL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to use all the features of the application";
@@ -366,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeA;
+				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.Safe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -383,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeAge/Preview Content\"";
-				DEVELOPMENT_TEAM = 5CG2FMA8V7;
+				DEVELOPMENT_TEAM = 8BA47GYXAL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to use all the features of the application";
@@ -398,7 +402,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.SafeA;
+				PRODUCT_BUNDLE_IDENTIFIER = yourcompany.com.Safe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
