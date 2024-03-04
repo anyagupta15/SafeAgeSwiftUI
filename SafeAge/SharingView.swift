@@ -2,39 +2,43 @@ import SwiftUI
 
 struct SharingView: View {
     @State private var isShareSheetPresented = false
+    @State private var link = ""
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Sharing")
-                .font(.title)
-                .bold()
+        ScrollView {
+            VStack(spacing: 20) {
+                Text("Sharing")
+                    .font(.title)
+                    .bold()
+                TextField("Paste Link", text: $link)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
 
-            LazyVStack(spacing: 20) {
-                BoxView(imageName: "heart", title: "Keep your health in check", description: "Keep loved ones informed about your condition", color: .green)
+                LazyVStack(spacing: 20) {
+                    BoxView(imageName: "heart", title: "Keep your health in check", description: "Keep loved ones informed about your condition", color: .green)
+                    BoxView(imageName: "lock", title: "Privacy", description: "Share and stop anytime", color: .purple)
+                    BoxView(imageName: "bell", title: "Notifications", description: "Get notified with updates", color: .yellow)
+                }
+                .frame(maxHeight: .infinity)
 
-                BoxView(imageName: "lock", title: "Privacy", description: "Share and stop anytime", color: .purple)
+                Spacer()  // Add Spacer here
 
-                BoxView(imageName: "bell", title: "Notifications", description: "Get notified with updates", color: .yellow)
+                Button(action: {
+                    isShareSheetPresented.toggle()
+                }) {
+                    Label("  Share  ", systemImage: "arrowshape.turn.up.right.circle")
+                }
+                .sheet(isPresented: $isShareSheetPresented) {
+                    ShareSheet(activityItems: [URL(string: "https://your-website-or-app-link.com")!])
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .padding(.top, 0)  // Adjusted padding here
             }
-            .frame(maxHeight: .infinity)
-
-            Spacer()
-
-            Button(action: {
-                isShareSheetPresented.toggle()
-            }) {
-                Label("  Share  ", systemImage: "arrowshape.turn.up.right.circle")
-            }
-            .sheet(isPresented: $isShareSheetPresented) {
-                ShareSheet(activityItems: [URL(string: "https://your-website-or-app-link.com")!])
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
             .padding()
         }
-        .padding()
     }
 }
 
@@ -66,6 +70,7 @@ struct BoxView: View {
         .background(Color(.systemBackground))
         .cornerRadius(10)
         .shadow(radius: 5)
+        .navigationBarHidden(true)
     }
 }
 
@@ -74,4 +79,3 @@ struct SharingView_Previews: PreviewProvider {
         SharingView()
     }
 }
-

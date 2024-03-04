@@ -17,14 +17,7 @@ struct HealthProfile: View {
     @State private var bs_type = ""
     @State private var name = ""
     var body: some View {
-        VStack {
-            Image(systemName: "heart.circle.fill")
-                .resizable()
-                .frame(width: 80, height: 80)
-                .foregroundColor(.red)
-                .padding(.top, 20)
-            //.padding(.bottom, 20)
-            //start of cartype menu
+        VStack (spacing: 7){
             HStack{
                 Text("First Name :")
                     .foregroundStyle(Color.black)
@@ -75,40 +68,6 @@ struct HealthProfile: View {
             }
             .padding()
             
-            
-            HStack {
-                                        Text("Date of Birth :")
-                                            .foregroundStyle(Color.black)
-                                            .padding(.leading, 50)
-                                            
-                                        Spacer()
-                                    }.padding(.bottom, -20)
-                                    
-                                    ZStack(alignment: .trailing) {
-                                        DatePicker(
-                                            "",
-                                            selection: $carMileage,
-                                            displayedComponents: [.date]
-                                        )
-                                        .multilineTextAlignment(.leading)
-                                        .padding(.leading, 20)
-                                        .frame(width: 300, height: 50)
-                                        .foregroundColor(Color.black)
-                                        .background(Color.black.opacity(0.05))
-                                        .cornerRadius(10)
-                                        .padding(.bottom,5)
-                                        
-                                        Text("")
-                                            .padding(.trailing, 10)
-                                            .foregroundColor(.gray)
-                                    }
-                                    .padding()
-            //end of car type menu
-            
-            
-            
-            
-            //start of cartype menu
             HStack{
                 Text("Sex :")
                     .foregroundStyle(Color.black)

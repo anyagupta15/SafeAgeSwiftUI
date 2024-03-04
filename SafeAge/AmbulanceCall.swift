@@ -21,15 +21,18 @@ struct AmbulanceCall: View {
                 
                 Spacer()
                 
-                Text("Emergency Calling.....Calling......")
+                Text("Emergency Calling")
                     .bold()
+                    .font(. system(size: 35))
                     .padding(.bottom,10)
+                    .multilineTextAlignment(.center)
+                
                
                 
                 Text("101")
-                    .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
+                    .font(. system(size: 27))
                 
                 Spacer()
                 

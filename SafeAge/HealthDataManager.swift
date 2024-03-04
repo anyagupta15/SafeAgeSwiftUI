@@ -3,8 +3,8 @@ import HealthKit
 class HealthDataManager: ObservableObject {
     private let healthStore = HKHealthStore()
 
-    @Published var heartRate: Double = 0.0
-    @Published var stepCount: Double = 0.0
+    @Published var heartRate: Double = 50.0
+    @Published var stepCount: Int = 0
     @Published var heartRateProgress: Float = 0.0
     @Published var stepCountProgress: Float = 0.0
     @Published var sleepHours: Double = 0.0
@@ -15,9 +15,10 @@ class HealthDataManager: ObservableObject {
     @Published var temperatureProgress: Float = 0.0
     @Published var bloodPressure: Double = 180.0
     @Published var bloodPressureProgress: Float = 0.0
+    
     init() {
-           requestHealthData()
-       }
+        requestHealthData()
+    }
 
     func requestHealthData() {
         guard HKHealthStore.isHealthDataAvailable() else { return }
@@ -67,13 +68,12 @@ class HealthDataManager: ObservableObject {
         let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, result, error in
             if let result = result, let value = result.sumQuantity() {
                 DispatchQueue.main.async {
-                    self.stepCount = value.doubleValue(for: HKUnit.count())
+                    self.stepCount = Int(value.doubleValue(for: HKUnit.count()))
                 }
             }
         }
         healthStore.execute(query)
     }
-
 
     private func fetchSleepData() {
         let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
@@ -118,4 +118,3 @@ class HealthDataManager: ObservableObject {
         healthStore.execute(query)
     }
 }
-

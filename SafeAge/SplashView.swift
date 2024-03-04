@@ -16,15 +16,15 @@ struct SplashView: View {
                         .foregroundColor(.red.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
-                    Text("A")
+                    Text("a")
                         .foregroundColor(.red.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
-                    Text("F")
+                    Text("f")
                         .foregroundColor(.red.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
-                    Text("E")
+                    Text("e")
                         .foregroundColor(.red.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
@@ -32,11 +32,11 @@ struct SplashView: View {
                         .foregroundColor(.orange.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
-                    Text("G")
+                    Text("g")
                         .foregroundColor(.orange.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                     
-                    Text("E")
+                    Text("e")
                         .foregroundColor(.orange.opacity(0.8))
                         .font(Font.custom("Baskerville-Bold", size: 60))
                 }

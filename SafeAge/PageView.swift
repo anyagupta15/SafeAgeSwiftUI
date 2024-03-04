@@ -28,10 +28,10 @@ struct PageView: View {
                 .font(.subheadline)
                 .frame(width: 300)
             
+            
+            
         }
     }
 }
 
-#Preview {
-    PageView(page: Page.samplePage)
-}
+

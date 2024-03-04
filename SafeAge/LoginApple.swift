@@ -12,7 +12,6 @@ struct LoginApple: View {
     @State private var showingNextScreen = false
     
     var body: some View {
-        NavigationView {
             ZStack {
                 // Background Circles
                 Circle()
@@ -78,8 +77,8 @@ struct LoginApple: View {
                 .padding()
                 .navigationBarHidden(true)
             }
-            .navigationTitle("Sign In")
-        }
+  //          .navigationTitle("Sign In")
+        
     }
 }
 

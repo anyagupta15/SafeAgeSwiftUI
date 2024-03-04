@@ -2,20 +2,27 @@ import SwiftUI
 
 struct CallingView2: View {
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 20) {
+            Text("Who do you want to call?")
+                .padding(.top,70)
+                .bold()
+                .font(.system(size: 30))
             // Second Row
-            HStack(spacing: 10) {
+            HStack(spacing: 20) {
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 150)
+                    .frame(height: 180)
                     .foregroundColor(Color.green.opacity(0.8))
+                    .padding(.top,5)
                     .overlay(
                         VStack {
                             Image("bitmoji")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 80, height: 80)
+                                .frame(width: 90, height: 90)
                                 .clipShape(Circle())
-                                .padding()
+                                .padding(.top,30)
+                            Text("Rohan")
+                                .font(.system(size: 18))
                             
                             Spacer()
                             
@@ -29,16 +36,19 @@ struct CallingView2: View {
                     )
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 150)
+                    .frame(height: 180)
                     .foregroundColor(Color.purple.opacity(0.8))
+                    .padding(.top,5)
                     .overlay(
                         VStack {
                             Image("bitmoji3")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
+                                .frame(width: 90, height: 90)
                                 .clipShape(Circle())
-                                .padding()
+                                .padding(.top,30)
+                            Text("Amit")
+                                .font(.system(size: 18))
                             
                             Spacer()
                             
@@ -55,16 +65,18 @@ struct CallingView2: View {
             // Third Row
             HStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 150)
+                    .frame(height: 180)
                     .foregroundColor(Color.yellow.opacity(0.8))
                     .overlay(
                         VStack {
                             Image("bitmoji4")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
+                                .frame(width: 90, height: 90)
                                 .clipShape(Circle())
-                                .padding()
+                                .padding(.top,30)
+                            Text("Priya")
+                                .font(.system(size: 18))
                             
                             Spacer()
                             
@@ -78,16 +90,18 @@ struct CallingView2: View {
                     )
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 150)
+                    .frame(height: 180)
                     .foregroundColor(Color.gray.opacity(0.8))
                     .overlay(
                         VStack {
                             Image("ambulance")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
+                                .frame(width: 90, height: 90)
                                 .clipShape(Circle())
                                 .padding()
+                            Text("Ambulance")
+                                .font(.system(size: 18))
                             
                             Spacer()
                             
@@ -106,6 +120,7 @@ struct CallingView2: View {
         .padding()
         .background(Color(.systemBackground))
         .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
 }
 

@@ -19,9 +19,9 @@ struct SettingsView: View {
                                 Label("Profile", systemImage: "person.circle")
                             }
 
-                            NavigationLink(destination: Text("Emergency Contacts")) {
-                                Label("Emergency Contacts", systemImage: "person.crop.circle.badge.plus")
-                            }
+//                            NavigationLink(destination: Text("Emergency Contacts")) {
+//                                Label("Emergency Contacts", systemImage: "person.crop.circle.badge.plus")
+//                            }
                         }
 
                         Section(header: Text("Sharing with")) {
