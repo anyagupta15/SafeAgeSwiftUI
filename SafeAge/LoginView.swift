@@ -16,8 +16,19 @@ struct LoginView: View {
     @State private var showingNextScreen = false
     @State private var showingSignUpScreen = false
     @State private var isPasswordVisible = false
+    @State private var userLoggedIn = false
+    
     
     var body: some View {
+        if userLoggedIn {
+            TabBar()
+        }
+        else{
+            content
+        }
+    }
+    
+    var content: some View {
         ZStack{
             //right upper circle
             Circle()
@@ -125,7 +136,13 @@ struct LoginView: View {
 //                    EmptyView()
 //                }
 
-                
+                .onAppear(){
+                    Auth.auth().addStateDidChangeListener {auth, user in
+                        if user != nil {
+                            userLoggedIn.toggle()
+                        }
+                    }
+                }
                 
                 HStack {
                     Spacer()
@@ -141,6 +158,7 @@ struct LoginView: View {
                     NavigationLink(destination: signup_page(), isActive: $showingSignUpScreen) {
                         EmptyView()
                     }
+                    
                 }
                 .padding(.top, 20)
                             }
