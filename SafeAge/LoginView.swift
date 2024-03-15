@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
-    @State private var wrongUsername = 0
-    @State private var wrongPassword = 0
+   // @State private var wrongUsername = 0
+   // @State private var wrongPassword = 0
     @State private var showingNextScreen = false
     @State private var showingSignUpScreen = false
     @State private var isPasswordVisible = false
@@ -46,17 +47,17 @@ struct LoginView: View {
                     .bold()
                     .padding(.bottom,10)
                 
-                Text("Login")
+                Text("Welcome")
                     .font(.largeTitle)
                     .bold()
                     .padding()
                 
-                TextField("Username", text: $username)
+                TextField("Email", text: $email)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    .border(.red, width: CGFloat(wrongUsername))
+                   // .border(.red, width: CGFloat(wrongUsername))
                     .autocapitalization(.none)
                 
                 
@@ -65,24 +66,65 @@ struct LoginView: View {
                     .frame(width:300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    .border(.red, width: CGFloat(wrongPassword))
+                    //.border(.red, width: CGFloat(wrongPassword))
                     .autocapitalization(.none)
                 
-                
-                
-                Button("Login") {
-                    showingNextScreen.toggle()
-                    aunthenticateUser(username: username, password: password)
+                Button(action: {
+                    // Action for sign up
+                    login()
+                }) {
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.top, 20)
+//                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+//                            EmptyView()
+//                        }
                 }
-                .foregroundColor(.white)
-                .frame(width: 201, height: 44)
-                .background(Color.blue)
-                .cornerRadius(10)
-                //.padding(.top, 20)
-                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-                    EmptyView()
+//                Button("Login") {
+//                    login()
+//                   // showingNextScreen.toggle()
+//                }
+//                .foregroundColor(.white)
+//                .frame(width: 300, height: 50)
+//                .background(Color.blue)
+//                .cornerRadius(10)
+//                //.padding(.top, 20)
+//                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+//                    EmptyView()
+//                }
+
+                Button(action: {
+                    // Action for sign up
+                    register()
+                }) {
+                    Text("Sign Up")
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.top, 15)
+//                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+//                            EmptyView()
+//                        }
                 }
                 
+//                Button("Signup") {
+//                    register()
+//                   // showingNextScreen.toggle()
+//
+//                }
+//                .foregroundColor(.white)
+//                .frame(width: 300, height: 50)
+//                .background(Color.blue)
+//                .cornerRadius(10)
+//                .padding(.top, 15)
+//                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+//                    EmptyView()
+//                }
+
                 
                 
                 HStack {
@@ -106,21 +148,24 @@ struct LoginView: View {
         }
         .padding()
     }
+    func login(){
+        Auth.auth().signIn(withEmail: email, password: password){
+            result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func register(){
+            Auth.auth().createUser(withEmail: email, password: password){
+                result, error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                }
+            }
+        }
 
-                    
-                    func aunthenticateUser(username: String, password: String) {
-                        if username.lowercased() == "anvitpawar" {
-                            wrongUsername = 0
-                            if password.lowercased() == "abc12345" {
-                                wrongPassword = 0
-                                showingNextScreen = true
-                            } else {
-                                wrongPassword = 2
-                            }
-                        } else {
-                            wrongUsername = 2
-                        }
-                    }
 }
                 
 
@@ -129,9 +174,3 @@ struct LoginView: View {
                         LoginView()
                     }
                 }
-
-            
-            
-            
-            
-      
