@@ -2,17 +2,53 @@
 //  LogoutView.swift
 //  SafeAge
 //
-//  Created by user1 on 15/03/24.
+//  Created by user1 on 16/03/24.
 //
-
 import SwiftUI
+import Firebase
 
 struct LogoutView: View {
+    @State private var isLoggedOut = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            if isLoggedOut {
+                LoginView()
+            } else {
+                VStack {
+                    Text("Logged Out Successfully")
+                        .font(.title)
+                        .padding()
+                    
+                    Button(action: {
+                        signOut()
+                    }) {
+                        Text("Logout")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                }
+                .navigationBarHidden(true)
+            }
+        }
+    }
+    
+    private func signOut() {
+        do {
+            try Auth.auth().signOut()
+            isLoggedOut = true
+        } catch {
+            print("Error signing out: \(error.localizedDescription)")
+        }
     }
 }
 
-#Preview {
-    LogoutView()
+struct LogoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        LogoutView()
+    }
 }
+

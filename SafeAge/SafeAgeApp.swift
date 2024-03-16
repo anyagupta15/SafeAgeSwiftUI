@@ -11,6 +11,7 @@ import Firebase
 @main
 
 struct SafeAgeApp: App {
+    @StateObject var dataManager = DataManager()
     
     init(){
         FirebaseApp.configure()
@@ -18,7 +19,8 @@ struct SafeAgeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            ListView()
+                .environmentObject(dataManager)
         }
     }
 }

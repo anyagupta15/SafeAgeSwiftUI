@@ -3,7 +3,7 @@ import SwiftUI
 struct TabBar: View {
     // Constant for icon size
     private let iconSize: CGFloat = 50
-
+    
     var body: some View {
         TabView {
             // Icon 1
@@ -14,7 +14,7 @@ struct TabBar: View {
                         .frame(width: iconSize, height: iconSize)
                     Text("Home")
                 }
-
+            
             // Icon 2
             CallingView2()
                 .tabItem {
@@ -23,7 +23,7 @@ struct TabBar: View {
                         .frame(width: iconSize, height: iconSize)
                     Text("Action Centre")
                 }
-
+            
             // Icon3
             SharingView()
                 .tabItem {
@@ -31,14 +31,23 @@ struct TabBar: View {
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
                     Text("Share")
+                    
+                }
+            LogoutView()
+                .tabItem {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                    Text("logout")
+                    
                 }
         }
     }
-}
-
-struct TabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBar()
+    
+    struct TabBar_Previews: PreviewProvider {
+        static var previews: some View {
+            TabBar()
+        }
     }
+    
 }
-
