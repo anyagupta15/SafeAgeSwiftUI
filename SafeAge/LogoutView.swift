@@ -6,7 +6,6 @@
 //
 import SwiftUI
 import Firebase
-
 struct LogoutView: View {
     @State private var isLoggedOut = false
 

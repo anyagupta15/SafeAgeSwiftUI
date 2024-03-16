@@ -27,7 +27,7 @@ struct List1View: View {
                 Image(systemName: "plus")
             }))
             .sheet(isPresented: $showPopup){
-                NewHealthView()
+                NewHealthView(userID: "CqTjNqnrkK08KE6vVGzN")
             }
         }
     }

@@ -19,7 +19,7 @@ struct SafeAgeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            List1View()
+            SplashView()
                 .environmentObject(userdatamanager)
         }
     }

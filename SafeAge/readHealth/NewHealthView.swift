@@ -1,10 +1,3 @@
-//
-//  NewDogView.swift
-//  SafeAge
-//
-//  Created by user1 on 16/03/24.
-//
-
 import SwiftUI
 
 struct NewHealthView: View {
@@ -15,37 +8,52 @@ struct NewHealthView: View {
     @State private var newstepCount = ""
     @State private var newstress = ""
     @State private var newtemperature = ""
+    
+    let userID: String // Variable to hold the user ID
 
-
-    
-    
-
-    
-    
     var body: some View {
         VStack{
-            TextField("BloodPressure", text: $newbloodPressure)
+            TextField("Blood Pressure", text: $newbloodPressure)
                 .padding()
-            TextField("HeartRate", text: $newheartRate)
+            TextField("Heart Rate", text: $newheartRate)
                 .padding()
             TextField("Sleep", text: $newsleep)
                 .padding()
-            TextField("StepCount", text: $newstepCount)
+            TextField("Step Count", text: $newstepCount)
                 .padding()
             TextField("Stress", text: $newstress)
                 .padding()
             TextField("Temperature", text: $newtemperature)
+                .padding()
             
-            Button {
+            Button(action: {
                 userdatamanager.addData(abloodPressure: newbloodPressure, aheartRate: newheartRate, asleep: newsleep, astepCount: newstepCount , astress: newstress, atemperature: newtemperature)
-            } label: {
+            }) {
                 Text("Save")
             }
+            .padding()
+
+            Button(action: {
+                let newData: [String: Any] = [
+                    "bloodPressure": newbloodPressure,
+                    "heartRate": newheartRate,
+                    "sleep": newsleep,
+                    "stepCount": newstepCount,
+                    "stress": newstress,
+                    "temperature": newtemperature
+                ]
+                userdatamanager.updateData(id: userID, newData: newData) // Use userID variable
+            }) {
+                Text("Update")
+            }
+            .padding()
         }
         .padding()
     }
 }
-#Preview {
-    NewHealthView()
-}
 
+struct NewHealthView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewHealthView(userID: "CqTjNqnrkK08KE6vVGzN") // Pass the userID here
+    }
+}

@@ -38,6 +38,7 @@
 		7FDE7E7D2BA5CD5D00CDB681 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E7C2BA5CD5D00CDB681 /* UserDataManager.swift */; };
 		7FDE7E7F2BA5D39700CDB681 /* List1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E7E2BA5D39700CDB681 /* List1View.swift */; };
 		7FDE7E812BA5D5D000CDB681 /* NewHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E802BA5D5D000CDB681 /* NewHealthView.swift */; };
+		7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E822BA61C9000CDB681 /* SecondUser.swift */; };
 		7FDE8D672B55406900C4E5E9 /* SafeAgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */; };
 		7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE8D682B55406900C4E5E9 /* ContentView.swift */; };
 		7FDE8D6B2B55406C00C4E5E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDE8D6A2B55406C00C4E5E9 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		7FDE7E7C2BA5CD5D00CDB681 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		7FDE7E7E2BA5D39700CDB681 /* List1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List1View.swift; sourceTree = "<group>"; };
 		7FDE7E802BA5D5D000CDB681 /* NewHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHealthView.swift; sourceTree = "<group>"; };
+		7FDE7E822BA61C9000CDB681 /* SecondUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondUser.swift; sourceTree = "<group>"; };
 		7FDE8D632B55406900C4E5E9 /* SafeAge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeAge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAgeApp.swift; sourceTree = "<group>"; };
 		7FDE8D682B55406900C4E5E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				7FDE8D802B55C90F00C4E5E9 /* signup_page.swift */,
 				7F013ED72B8BB4120062A2B7 /* SharingView.swift */,
 				7F7FABE72B85F87200F8E86E /* HealthKitManager.swift */,
+				7FDE7E822BA61C9000CDB681 /* SecondUser.swift */,
 				7F76F8CC2B58085300F0175F /* Settings.swift */,
 				7FDE7E792BA5CC5900CDB681 /* readHealth */,
 				7FDE7E6E2BA5C51B00CDB681 /* Read1 */,
@@ -316,6 +319,7 @@
 				7FDE8D812B55C90F00C4E5E9 /* signup_page.swift in Sources */,
 				7FDE8D672B55406900C4E5E9 /* SafeAgeApp.swift in Sources */,
 				7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */,
+				7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */,
 				7F013ED62B8BABFE0062A2B7 /* SplashView.swift in Sources */,
 				7FDE7E762BA5C74C00CDB681 /* ListView.swift in Sources */,
 				7FDE7E702BA5C53800CDB681 /* Dog.swift in Sources */,

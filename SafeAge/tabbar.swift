@@ -41,6 +41,14 @@ struct TabBar: View {
                     Text("logout")
                     
                 }
+            List1View()
+                .tabItem {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                    Text("logout")
+                    
+                }
         }
     }
     

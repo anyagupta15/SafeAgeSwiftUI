@@ -1,17 +1,3 @@
-//
-//  UserDataManager.swift
-//  SafeAge
-//
-//  Created by user1 on 16/03/24.
-//
-
-//
-//  DataManager.swift
-//  SafeAge
-//
-//  Created by user1 on 16/03/24.
-//
-
 import SwiftUI
 import Firebase
 
@@ -39,7 +25,6 @@ class UserDataManager: ObservableObject {
                 let stress = data["stress"] as? String ?? ""
                 let temperature = data["temperature"] as? String ?? ""
                 return userHealthData(id: id, bloodPressure: bloodPressure, heartRate: heartRate, sleep: sleep, stepCount: stepCount, stress: stress, temperature: temperature)
-
             }
         }
     }
@@ -47,7 +32,7 @@ class UserDataManager: ObservableObject {
     func addData(abloodPressure: String, aheartRate: String, asleep: String, astepCount: String, astress: String, atemperature: String) {
         let db = Firestore.firestore()
         let data: [String: Any] = [
-            "bloodPresure": abloodPressure,
+            "bloodPressure": abloodPressure,
             "heartRate": aheartRate,
             "sleep": asleep,
             "stepCount": astepCount,
@@ -63,4 +48,18 @@ class UserDataManager: ObservableObject {
             }
         }
     }
+    
+    func updateData(id: String, newData: [String: Any]) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("userHealthData").document(id)
+        
+        docRef.updateData(newData) { error in
+            if let error = error {
+                print("Error updating document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
 }
+
