@@ -19,7 +19,8 @@ import SwiftUI
 struct List2View: View {
     
     @EnvironmentObject var healthdatafirebasemanager: HealthDataFirebaseManager
-
+    @State private var showPopup = false
+    
     var body: some View {
         NavigationView{
             List{
@@ -36,13 +37,20 @@ struct List2View: View {
                     }
                 }
             }
-            .navigationTitle("Health Data")
+            .navigationTitle("Health Data 2 ")
+            .navigationBarItems(trailing: Button(action: {
+                showPopup.toggle()
+            }, label: {
+                Image(systemName: "plus")
+            }))
+            .sheet(isPresented: $showPopup){
+                newhealth(userID: "xDEgLK4WxkTJmrp1edbO")
                 
+            }
+            
         }
-        
     }
 }
-
 #Preview {
     List2View()
         .environmentObject(HealthDataFirebaseManager())

@@ -41,7 +41,7 @@ struct TabBar: View {
                     Text("logout")
                     
                 }
-            List1View()
+            List2View()
                 .tabItem {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()

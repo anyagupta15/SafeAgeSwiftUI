@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseFirestore
 
 class DataManager: ObservableObject {
     @Published var dogs: [Dog] = []

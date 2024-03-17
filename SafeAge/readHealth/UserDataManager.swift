@@ -1,5 +1,5 @@
 import SwiftUI
-import Firebase
+import FirebaseFirestore
 
 class UserDataManager: ObservableObject {
     @Published var userhealthdata: [userHealthData] = []

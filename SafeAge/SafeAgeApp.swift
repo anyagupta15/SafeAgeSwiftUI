@@ -1,26 +1,19 @@
-//
-//  SafeAgeApp.swift
-//  SafeAge
-//
-//  Created by user1 on 15/01/24.
-//
-
 import SwiftUI
 import Firebase
 
 @main
-
 struct SafeAgeApp: App {
-    @StateObject var userdatamanager = UserDataManager()
-    
-    init(){
+    @StateObject var healthdatafirebasemanager = HealthDataFirebaseManager()
+
+    init() {
         FirebaseApp.configure()
+        // Initialize healthdatafirebasemanager here if needed
     }
-    
+
     var body: some Scene {
         WindowGroup {
             SplashView()
-                .environmentObject(userdatamanager)
+                .environmentObject(healthdatafirebasemanager)
         }
     }
 }

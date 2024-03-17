@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseFirestore
 
 class HealthDataFirebaseManager: ObservableObject {
     @Published var healthkitfirebase: [healthdata] = []
