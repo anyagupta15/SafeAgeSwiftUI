@@ -1,8 +1,8 @@
 import SwiftUI
-
 struct List2View: View {
     @EnvironmentObject var healthdatafirebasemanager: HealthDataFirebaseManager
     @State private var showPopup = false
+    @EnvironmentObject var documentIDManager: DocumentIDManager
     
     var body: some View {
         NavigationView{
@@ -26,12 +26,12 @@ struct List2View: View {
             }, label: {
                 Image(systemName: "plus")
             }))
-            .sheet(isPresented: $showPopup){
-                newhealth(userID: "xDEgLK4WxkTJmrp1edbO")
-                    .environmentObject(healthdatafirebasemanager) // Inject HealthDataFirebaseManager
+            .sheet(isPresented: $showPopup) {
+                newhealth(userID: documentIDManager.documentID)
+                    .environmentObject(healthdatafirebasemanager)
             }
             .navigationBarItems(trailing: Button(action: {
-                healthdatafirebasemanager.fetchData() // Refresh data
+                healthdatafirebasemanager.fetchData(documentID: documentIDManager.documentID)
             }) {
                 Text("Refresh Data")
             })
@@ -39,7 +39,3 @@ struct List2View: View {
     }
 }
 
-#Preview {
-    List2View()
-        .environmentObject(HealthDataFirebaseManager())
-}

@@ -29,6 +29,7 @@
 		7F8627492BA76B11002CF479 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F8627482BA76B11002CF479 /* FirebaseFirestore */; };
 		7F86274B2BA76B11002CF479 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F86274A2BA76B11002CF479 /* FirebaseFirestoreSwift */; };
 		7F86274D2BA76F82002CF479 /* newhealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F86274C2BA76F82002CF479 /* newhealth.swift */; };
+		7F8627512BA8AD7C002CF479 /* DocumentIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */; };
 		7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5CE52B583ACA00B57FE7 /* Eco.swift */; };
 		7FDE7E6B2BA5C3AB00CDB681 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */; };
 		7FDE7E702BA5C53800CDB681 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E6F2BA5C53800CDB681 /* Dog.swift */; };
@@ -74,6 +75,7 @@
 		7F7FABE92B85FF9100F8E86E /* SafeAge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeAge.entitlements; sourceTree = "<group>"; };
 		7F807D0C2B8B53580062C605 /* CallingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingView2.swift; sourceTree = "<group>"; };
 		7F86274C2BA76F82002CF479 /* newhealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newhealth.swift; sourceTree = "<group>"; };
+		7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentIDManager.swift; sourceTree = "<group>"; };
 		7F8C5CE52B583ACA00B57FE7 /* Eco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco.swift; sourceTree = "<group>"; };
 		7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		7FDE7E6F2BA5C53800CDB681 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				7FDE7E902BA6DC5100CDB681 /* healthdata.swift */,
 				7F86274C2BA76F82002CF479 /* newhealth.swift */,
+				7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */,
 				7FDE7E932BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift */,
 				7FDE7E952BA6DD2500CDB681 /* List2View.swift */,
 			);
@@ -322,6 +325,7 @@
 				7F7FABE82B85F87200F8E86E /* HealthKitManager.swift in Sources */,
 				7F76F8CD2B58085300F0175F /* Settings.swift in Sources */,
 				7FDE7E6B2BA5C3AB00CDB681 /* LogoutView.swift in Sources */,
+				7F8627512BA8AD7C002CF479 /* DocumentIDManager.swift in Sources */,
 				7FDE7E812BA5D5D000CDB681 /* NewHealthView.swift in Sources */,
 				841BAB812B946A8300BF4A90 /* ViewController.swift in Sources */,
 				7FDE7E782BA5C8D500CDB681 /* NewDogView.swift in Sources */,

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SharingView: View {
     @State private var isShareSheetPresented = false
-    @State private var link = ""
+    @State private var link = "xDEgLK4WxkTJmrp1edbO"
 
     var body: some View {
         ScrollView {
@@ -10,6 +10,14 @@ struct SharingView: View {
                 Text("Sharing")
                     .font(.title)
                     .bold()
+                
+                Text("Paste the following code in the user B device to share data:  ")
+                    .font(.title2)
+                    .bold()
+                    .foregroundColor(.blue)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+
                 TextField("Paste Link", text: $link)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
@@ -21,7 +29,7 @@ struct SharingView: View {
                 }
                 .frame(maxHeight: .infinity)
 
-                Spacer()  // Add Spacer here
+                Spacer()
 
                 Button(action: {
                     isShareSheetPresented.toggle()
@@ -35,7 +43,7 @@ struct SharingView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
-                .padding(.top, 0)  // Adjusted padding here
+                .padding(.top, 0)
             }
             .padding()
         }

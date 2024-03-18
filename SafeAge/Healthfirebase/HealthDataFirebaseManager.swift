@@ -4,12 +4,16 @@ import FirebaseFirestore
 
 class HealthDataFirebaseManager: ObservableObject {
     @Published var healthkitfirebase: [healthdata] = []
-    init(){
-        fetchData()
+    var documentIDManager: DocumentIDManager // Remove @EnvironmentObject declaration
+    
+    init(documentIDManager: DocumentIDManager) {
+        self.documentIDManager = documentIDManager
+        fetchData(documentID: documentIDManager.documentID) // Fetch data using initial document ID
     }
-    func fetchData() {
+    
+    func fetchData(documentID: String) {
         let db = Firestore.firestore()
-        let docRef = db.collection("userHealthData").document("xDEgLK4WxkTJmrp1edbO")
+        let docRef = db.collection("userHealthData").document(documentID) // Use provided document ID
         
         docRef.getDocument { document, error in
             if let document = document, document.exists {
@@ -23,8 +27,8 @@ class HealthDataFirebaseManager: ObservableObject {
                 let temperature = data["temperature"] as? Int ?? 0
                 
                 // Convert string values to Int
-//                let sleep = Int(sleepString) ?? 0
-//                let stepCount = Int(stepCountString) ?? 0
+                // let sleep = Int(sleepString) ?? 0
+                // let stepCount = Int(stepCountString) ?? 0
                 
                 // Update healthkitfirebase with data from the document
                 self.healthkitfirebase = [healthdata(id: id, bloodPressure: bloodPressure, heartRate: heartRate, sleep: sleepString, stepCount: stepCountString, stress: stress, temperature: temperature)]

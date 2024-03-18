@@ -3,7 +3,7 @@ import HealthKit
 class HealthDataManager: ObservableObject {
     private let healthStore = HKHealthStore()
 
-    @Published var heartRate: Double = 50.0
+    @Published var heartRate: Double = 0.0
     @Published var stepCount: Int = 0
     @Published var heartRateProgress: Float = 0.0
     @Published var stepCountProgress: Float = 0.0
@@ -13,7 +13,7 @@ class HealthDataManager: ObservableObject {
     @Published var stressProgress: Float = 0.0
     @Published var temperature: Double = 0.0
     @Published var temperatureProgress: Float = 0.0
-    @Published var bloodPressure: Double = 180.0
+    @Published var bloodPressure: Double = 0.0
     @Published var bloodPressureProgress: Float = 0.0
     
     init() {

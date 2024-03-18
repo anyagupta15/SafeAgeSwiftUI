@@ -3,20 +3,24 @@ import Firebase
 
 @main
 struct SafeAgeApp: App {
-    @StateObject var healthdatafirebasemanager = HealthDataFirebaseManager()
+    // Define properties for your managers
     @StateObject var healthDataManager = HealthDataManager()
+    @StateObject var documentIDManager = DocumentIDManager()
 
     init() {
-        FirebaseApp.configure()
-        // Initialize any other dependencies here if needed
+        FirebaseApp.configure() // Initialize Firebase
     }
 
     var body: some Scene {
         WindowGroup {
-            TabBar()
-                .environmentObject(healthdatafirebasemanager)
-                .environmentObject(healthDataManager) // Inject HealthDataManager into the environment
+            // Initialize HealthDataFirebaseManager within the body
+            let healthDataFirebaseManager = HealthDataFirebaseManager(documentIDManager: documentIDManager)
+            
+            // Provide the environment objects to the TabBar
+            SplashView()
+                .environmentObject(healthDataFirebaseManager)
+                .environmentObject(healthDataManager)
+                .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment
         }
     }
 }
-

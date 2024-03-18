@@ -3,7 +3,13 @@ import SwiftUI
 struct TabBar: View {
     // Constant for icon size
     private let iconSize: CGFloat = 50
-    @StateObject var healthDataFirebaseManager = HealthDataFirebaseManager()
+    
+    @StateObject var healthDataFirebaseManager: HealthDataFirebaseManager
+    @EnvironmentObject var documentIDManager: DocumentIDManager // Inject DocumentIDManager
+    
+    init() {
+        _healthDataFirebaseManager = StateObject(wrappedValue: HealthDataFirebaseManager(documentIDManager: DocumentIDManager()))
+    }
     
     var body: some View {
         TabView {
@@ -57,7 +63,7 @@ struct TabBar: View {
     struct TabBar_Previews: PreviewProvider {
         static var previews: some View {
             TabBar()
+                .environmentObject(DocumentIDManager()) // Inject DocumentIDManager for preview
         }
     }
-    
 }
