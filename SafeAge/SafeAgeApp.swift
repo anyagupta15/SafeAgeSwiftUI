@@ -4,16 +4,19 @@ import Firebase
 @main
 struct SafeAgeApp: App {
     @StateObject var healthdatafirebasemanager = HealthDataFirebaseManager()
+    @StateObject var healthDataManager = HealthDataManager()
 
     init() {
         FirebaseApp.configure()
-        // Initialize healthdatafirebasemanager here if needed
+        // Initialize any other dependencies here if needed
     }
 
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            TabBar()
                 .environmentObject(healthdatafirebasemanager)
+                .environmentObject(healthDataManager) // Inject HealthDataManager into the environment
         }
     }
 }
+

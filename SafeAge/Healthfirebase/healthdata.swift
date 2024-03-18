@@ -9,10 +9,10 @@ import SwiftUI
 
 struct healthdata: Identifiable {
     var id: String
-    var bloodPressure: String
-    var heartRate: String
-    var sleep: String
-    var stepCount: String
-    var stress: String
-    var temperature: String
+    var bloodPressure: Int
+    var heartRate: Int
+    var sleep: Int
+    var stepCount: Int
+    var stress: Int
+    var temperature: Int
 }

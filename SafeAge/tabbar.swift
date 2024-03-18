@@ -3,6 +3,7 @@ import SwiftUI
 struct TabBar: View {
     // Constant for icon size
     private let iconSize: CGFloat = 50
+    @StateObject var healthDataFirebaseManager = HealthDataFirebaseManager()
     
     var body: some View {
         TabView {
@@ -42,6 +43,7 @@ struct TabBar: View {
                     
                 }
             List2View()
+                .environmentObject(healthDataFirebaseManager)
                 .tabItem {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()

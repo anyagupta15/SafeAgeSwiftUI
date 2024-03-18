@@ -1,41 +1,38 @@
-//
-//  HealthDataFirebaseManager.swift
-//  SafeAge
-//
-//  Created by user1 on 17/03/24.
-//
-
 import SwiftUI
+import Firebase
 import FirebaseFirestore
 
 class HealthDataFirebaseManager: ObservableObject {
     @Published var healthkitfirebase: [healthdata] = []
-    
     init(){
         fetchData()
     }
-    
     func fetchData() {
         let db = Firestore.firestore()
-        db.collection("userHealthData").addSnapshotListener { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-                print("Error fetching documents: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            self.healthkitfirebase = documents.map { queryDocumentSnapshot -> healthdata in
-                let data = queryDocumentSnapshot.data()
-                let id = queryDocumentSnapshot.documentID // Get the document ID
-                let bloodPressure = data["bloodPressure"] as? String ?? ""
-                let heartRate = data["heartRate"] as? String ?? ""
-                let sleep = data["sleep"] as? String ?? ""
-                let stepCount = data["stepCount"] as? String ?? ""
-                let stress = data["stress"] as? String ?? ""
-                let temperature = data["temperature"] as? String ?? ""
-                return healthdata (id: id, bloodPressure: bloodPressure, heartRate: heartRate, sleep: sleep, stepCount: stepCount, stress: stress, temperature: temperature)
+        let docRef = db.collection("userHealthData").document("xDEgLK4WxkTJmrp1edbO")
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let data = document.data() ?? [:]
+                let id = document.documentID
+                let bloodPressure = data["bloodPressure"] as? Int ?? 0
+                let heartRate = data["heartRate"] as? Int ?? 0
+                let sleepString = data["sleep"] as? Int ?? 0
+                let stepCountString = data["stepCount"] as? Int ?? 0
+                let stress = data["stress"] as? Int ?? 0
+                let temperature = data["temperature"] as? Int ?? 0
+                
+                // Convert string values to Int
+//                let sleep = Int(sleepString) ?? 0
+//                let stepCount = Int(stepCountString) ?? 0
+                
+                // Update healthkitfirebase with data from the document
+                self.healthkitfirebase = [healthdata(id: id, bloodPressure: bloodPressure, heartRate: heartRate, sleep: sleepString, stepCount: stepCountString, stress: stress, temperature: temperature)]
+            } else {
+                print("Document does not exist")
             }
         }
     }
-
 
     func updateData(id: String, newdata: [String: Any]) {
         let db = Firestore.firestore()

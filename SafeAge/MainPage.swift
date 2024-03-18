@@ -57,6 +57,7 @@ struct MainPage: View {
                         ])
                     }
                     .padding(.bottom, 10)
+                    
                 }
                 
                 HStack {
@@ -263,9 +264,19 @@ struct MainPage: View {
                 }
                 .padding(.bottom, 30)
                 
+                
             }
           // Hiding the back button
             .navigationBarHidden(true)
+          Button(action: {
+                          showingmanualFilling = true
+                      }) {
+                          Text("Open New Health View")
+                      }
+                      .sheet(isPresented: $showingmanualFilling) {
+                          newhealth(userID: "YourUserID")
+                              .environmentObject(healthDataManager)
+                      }
            // .navigationBarBackButtonHidden(true)
             .onAppear {
                 if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 || healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 || healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 || healthDataManager.stressLevel > 80 {
