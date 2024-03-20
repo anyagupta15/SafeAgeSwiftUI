@@ -35,8 +35,8 @@ struct ViewController: View {
 
     func checkVitalsAndNotify() {
         if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 ||
-            healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 ||
-            healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 ||
+            healthDataManager.temperature < 36 || healthDataManager.temperature > 37 ||
+            healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 100 ||
             healthDataManager.stressLevel > 80 {
             generateNotification()
         }

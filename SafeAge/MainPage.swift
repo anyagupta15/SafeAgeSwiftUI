@@ -14,9 +14,11 @@ struct MainPage: View {
     @State private var showingcallingview2 = false
     @State private var isCallingView2Presented = false
 
-
+    @State private var alertDismissed = false
     @StateObject private var healthDataManager = HealthDataManager()
-    
+    @EnvironmentObject var healthdatafirebasemanager: HealthDataFirebaseManager
+
+    @EnvironmentObject var documentIDManager: DocumentIDManager
     var body: some View {
       NavigationView { // Wrapping content in NavigationView
             VStack {
@@ -26,6 +28,20 @@ struct MainPage: View {
                         .bold()
                         .padding(.bottom, 1)
                     Spacer()
+                    Button(action: {
+                                    let newData: [String: Any] = [
+                                        "bloodPressure": healthDataManager.bloodPressureSystolic,
+                                        "heartRate": healthDataManager.heartRate,
+                                        "sleep": healthDataManager.sleepHours,
+                                        "stepCount": healthDataManager.stepCount,
+                                        "stress": healthDataManager.stressLevel,
+                                        "temperature": healthDataManager.temperature
+                                    ]
+                        healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
+                                }) {
+                                    Text("Update")
+                    }
+                    .padding()
                 }
                 
                 HStack {
@@ -33,6 +49,7 @@ struct MainPage: View {
                     Text("Hi Rani !")
                         .font(.title)
                         .bold()
+                    
                     Spacer()
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "person.crop.circle.fill")
@@ -88,7 +105,7 @@ struct MainPage: View {
                                 
                                 //  .padding()
                                 
-                                Text("\(Int(progressValue * 100)) bpm")
+                                Text("\(Int(healthDataManager.heartRate)) bpm")
                                     .foregroundColor(.white)
                                     // .padding()
                                     .font(.title3)
@@ -158,7 +175,7 @@ struct MainPage: View {
                                     .foregroundColor(.white)
                                     .font(.title2)
                                 
-                                Text("\(Int(healthDataManager.temperature * 100)) C")
+                                Text("\(Int(healthDataManager.temperature )) C")
                                     .foregroundColor(.white)
                                     .font(.title3)
                                     //.padding()
@@ -188,12 +205,11 @@ struct MainPage: View {
                                     .font(.title3)
                                 
                                 
-                                Text("\(Int(healthDataManager.bloodPressure * 100)) mm/Hg")
-                                    .foregroundColor(.white)
-                                    .font(.title3)
-                                    //.padding()
-                                    
-                            }
+                                Text("\(Int(healthDataManager.bloodPressureSystolic))/\(Int(healthDataManager.bloodPressureDiastolic)) mmHg")
+                                                                
+                                                                    .foregroundColor(.white)
+                                                                    .font(.title3)
+                                                            }
                             .padding()
                         }
                     }
@@ -278,52 +294,47 @@ struct MainPage: View {
                               .environmentObject(healthDataManager)
                       }
            // .navigationBarBackButtonHidden(true)
-            .onAppear {
-                if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 || healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 || healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 || healthDataManager.stressLevel > 80 {
-                    isShowingDialog = true
-                }
-                healthDataManager.requestHealthData()
-            }
-            .alert(isPresented: $isShowingDialog) {
-                Alert(
-                    title: Text("Alert!"),
-                    message: alertMessage(),
-                    primaryButton: .default(Text("Action")) {
-                        showActionButtonMenu = true
-                    },
-                    secondaryButton: .destructive(Text("Dismiss")) {
-                        print("Dismiss")
-                    }
-                )
-            }
-            .actionSheet(isPresented: $showActionButtonMenu) {
-                ActionSheet(title: Text("Choose an action"), buttons: [
-                    .default(Text("Call Ambulance")) {
-                        // Check if other properties should be updated here
-                        isCallingView2Presented = true
-                        print("Calling ambulance")
-                    },
-                    .default(Text("Call Saved Contact")) {
-                        // Check if other properties should be updated here
-                        isCallingView2Presented = true
-                        print("Calling saved contact")
-                    },
-                    //  .default(Text("Book Lab Appointment")) {
-                    //   showingmanualFilling.toggle()
-                    //   // Check if other properties should be updated here
-                    //  print("Booking lab appointment")
-                    // },
-                    .cancel()
-                ])
-            }
-            .sheet(isPresented: $isCallingView2Presented) {
-                CallingView2()
-            }
-           // .navigationBarBackButtonHidden(true) // Hiding the back button
-            .padding() // Add padding to the whole VStack
-      }.navigationBarHidden(true)
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in}
-    }
+                      .onAppear {
+                                      if shouldShowAlert() {
+                                          isShowingDialog = true
+                                      }
+                                      healthDataManager.requestHealthData()
+                                  }
+                                  .alert(isPresented: $isShowingDialog) {
+                                      Alert(
+                                          title: Text("Alert!"),
+                                          message: alertMessage(),
+                                          primaryButton: .default(Text("Action")) {
+                                              showActionButtonMenu = true
+                                          },
+                                          secondaryButton: .destructive(Text("Dismiss")) {
+                                              // Set the state variable to true when the user dismisses the alert
+                                              alertDismissed = true
+                                          }
+                                      )
+                                  }
+                                  .actionSheet(isPresented: $showActionButtonMenu) {
+                                      ActionSheet(title: Text("Choose an action"), buttons: [
+                                          .default(Text("Call Ambulance")) {
+                                              isCallingView2Presented = true
+                                              print("Calling ambulance")
+                                          },
+                                          .default(Text("Call Saved Contact")) {
+                                              isCallingView2Presented = true
+                                              print("Calling saved contact")
+                                          },
+                                          .cancel()
+                                      ])
+                                  }
+                                  .sheet(isPresented: $isCallingView2Presented) {
+                                      CallingView2()
+                                  }
+                                  .padding()
+                              }
+                              .navigationBarHidden(true)
+                              .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in }
+                          }
+
    
     func formattedDate() -> String {
         let formatter = DateFormatter()
@@ -354,25 +365,38 @@ struct MainPage: View {
     }
 
 
-    
     func alertMessage() -> Text {
-        if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
-            return Text("Heart Rate is out of normal range.")
-        } else if healthDataManager.temperature < 36.1 || healthDataManager.temperature > 37.2 {
-            return Text("Temperature is out of normal range.")
-        } else if healthDataManager.bloodPressure > 140 || healthDataManager.bloodPressure < 100 {
-            return Text("Blood Pressure is out of normal range.")
-        } else if healthDataManager.stressLevel > 80 {
-            return Text("Stress level is high.")
-        } else {
+            if shouldShowAlert() {
+                if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
+                    return Text("Heart Rate is out of the normal range.")
+                } else if healthDataManager.temperature < 36 || healthDataManager.temperature > 37 {
+                    return Text("Temperature is out of the normal range.")
+                    //            } else if healthDataManager.bloodOxygenLevel < 90 {
+                    //                return Text("Blood Oxygen Level is below normal.")
+                    //            }
+                }
+            }
             return Text("")
         }
+
+
+        func shouldShowAlert() -> Bool {
+            return !alertDismissed && (
+                healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 ||
+                healthDataManager.temperature < 36 || healthDataManager.temperature > 37 ||
+                healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 90 ||
+                healthDataManager.bloodPressureDiastolic > 90 || healthDataManager.bloodPressureDiastolic < 60
+            )
+        }
     }
-        //.navigationBarHidden(true)
-}
+
+
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPage()
+        @EnvironmentObject var documentIDManager: DocumentIDManager
+        newhealth(userID: documentIDManager.documentID) // Initialize without passing any arguments
+            .environmentObject(HealthDataManager())
+            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
     }
 }

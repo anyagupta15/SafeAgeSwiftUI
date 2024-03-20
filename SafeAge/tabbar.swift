@@ -40,18 +40,11 @@ struct TabBar: View {
                     Text("Share")
                     
                 }
-            LogoutView()
-                .tabItem {
-                    Image(systemName: "square.and.arrow.up")
-                        .resizable()
-                        .frame(width: iconSize, height: iconSize)
-                    Text("logout")
-                    
-                }
+            
             List2View()
                 .environmentObject(healthDataFirebaseManager)
                 .tabItem {
-                    Image(systemName: "square.and.arrow.up")
+                    Image(systemName: "figure.and.child.holdinghands")
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
                     Text("logout")

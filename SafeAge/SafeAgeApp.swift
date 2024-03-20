@@ -17,7 +17,7 @@ struct SafeAgeApp: App {
             let healthDataFirebaseManager = HealthDataFirebaseManager(documentIDManager: documentIDManager)
             
             // Provide the environment objects to the TabBar
-            SplashView()
+            TabBar()
                 .environmentObject(healthDataFirebaseManager)
                 .environmentObject(healthDataManager)
                 .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment

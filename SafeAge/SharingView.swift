@@ -3,7 +3,8 @@ import SwiftUI
 struct SharingView: View {
     @State private var isShareSheetPresented = false
     @State private var link = "xDEgLK4WxkTJmrp1edbO"
-
+    @State private var showPopup = false
+ //  @EnvironmentObject var documentIDManager: DocumentIDManager
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
@@ -17,10 +18,11 @@ struct SharingView: View {
                     .foregroundColor(.blue)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
-
-                TextField("Paste Link", text: $link)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
+            
+                               
+                               TextField("Paste Link", text: $link)
+                                   .textFieldStyle(RoundedBorderTextFieldStyle())
+                                   .padding(.horizontal)
 
                 LazyVStack(spacing: 20) {
                     BoxView(imageName: "heart", title: "Keep your health in check", description: "Keep loved ones informed about your condition", color: .green)
@@ -37,7 +39,7 @@ struct SharingView: View {
                     Label("  Share  ", systemImage: "arrowshape.turn.up.right.circle")
                 }
                 .sheet(isPresented: $isShareSheetPresented) {
-                    ShareSheet(activityItems: [URL(string: "https://your-website-or-app-link.com")!])
+                    ShareSheet(activityItems: [URL(string: "xDEgLK4WxkTJmrp1edbO")!])
                 }
                 .padding()
                 .background(Color.blue)

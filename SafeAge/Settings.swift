@@ -22,6 +22,9 @@ struct SettingsView: View {
 //                            NavigationLink(destination: Text("Emergency Contacts")) {
 //                                Label("Emergency Contacts", systemImage: "person.crop.circle.badge.plus")
 //                            }
+                            NavigationLink(destination: LogoutView()) { // Added navigation link to LogoutView
+                                                            Label("Logout", systemImage: "arrow.uturn.backward.circle")
+                                                        }
                         }
 
                         Section(header: Text("Sharing with")) {

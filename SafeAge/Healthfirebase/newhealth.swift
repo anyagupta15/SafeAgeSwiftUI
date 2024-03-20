@@ -39,7 +39,7 @@ struct newhealth: View {
             
             Button(action: {
                             let newData: [String: Any] = [
-                                "bloodPressure": healthDataManager.bloodPressure,
+                                "bloodPressure": healthDataManager.bloodPressureSystolic,
                                 "heartRate": healthDataManager.heartRate,
                                 "sleep": healthDataManager.sleepHours,
                                 "stepCount": healthDataManager.stepCount,
@@ -59,7 +59,7 @@ struct newhealth: View {
                 print("Stress: \(healthDataManager.stressLevel)")
                 print("Sleep: \(healthDataManager.sleepHours)")
                 print("Temperature: \(healthDataManager.temperature)")
-                print("Blood Pressure: \(healthDataManager.bloodPressure)")
+                print("Blood Pressure: \(healthDataManager.bloodPressureSystolic)")
                 // Print other data properties as needed
             }) {
                 Text("Print Data")
