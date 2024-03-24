@@ -47,7 +47,7 @@ struct TabBar: View {
                     Image(systemName: "figure.and.child.holdinghands")
                         .resizable()
                         .frame(width: iconSize, height: iconSize)
-                    Text("logout")
+                    Text("Family Share")
                     
                 }
         }

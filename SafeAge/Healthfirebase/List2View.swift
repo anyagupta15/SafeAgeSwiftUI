@@ -6,32 +6,31 @@ struct List2View: View {
     @EnvironmentObject var documentIDManager: DocumentIDManager
     @State private var link: String = "xDEgLK4WxkTJmrp1edbO" // State variable to hold the link
     @EnvironmentObject var healthDataManager: HealthDataManager
-   
+    
     var body: some View {
-        NavigationView{
-            VStack {
-                TextField("Enter document id", text: $documentIDManager.documentID)
-                    .padding()
-                
-                Button(action: {
-                                let newData: [String: Any] = [
-                                    "bloodPressure": healthDataManager.bloodPressureSystolic,
-                                    "heartRate": healthDataManager.heartRate,
-                                    "sleep": healthDataManager.sleepHours,
-                                    "stepCount": healthDataManager.stepCount,
-                                    "stress": healthDataManager.stressLevel,
-                                    "temperature": healthDataManager.temperature
-                                ]
-                    healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
-                            }) {
-                                Text("Update")
-                }
-                .padding()
+            NavigationView {
+                VStack {
+                    TextField("Enter document id", text: $documentIDManager.documentID)
+                    
+                //                Button(action: {
+                //                    let newData: [String: Any] = [
+                //                        "bloodPressure": healthDataManager.bloodPressureSystolic,
+                //                        "heartRate": healthDataManager.heartRate,
+                //                        "sleep": healthDataManager.sleepHours,
+                //                        "stepCount": healthDataManager.stepCount,
+                //                        "stress": healthDataManager.stressLevel,
+                //                        "temperature": healthDataManager.temperature
+                //                    ]
+                //                    healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
+                //                }) {
+                //                    Text("Update")
+                //                }
+                //                .padding()
                 
                 VStack(spacing: 15) {
                     ForEach(healthdatafirebasemanager.healthkitfirebase, id: \.id) { userhealthdata1 in
                         HStack(spacing: 15) {
-                            // Blood Pressure
+                            // Blood PressurexDEgLK4WxkTJmrp1edbO
                             VStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -215,32 +214,33 @@ struct List2View: View {
                         .padding(.bottom, 30)
                     }
                 }
-
-
-                List {
-                    ForEach(healthdatafirebasemanager.healthkitfirebase, id: \.id) { userhealthdata1 in
-                        VStack(alignment: .leading) {
-                            Text("ID: \(userhealthdata1.id)")
-                                .font(.headline)
-                            Text("Blood Pressure: \(userhealthdata1.bloodPressure)")
-                            Text("Heart Rate: \(userhealthdata1.heartRate)")
-                            Text("Sleep: \(userhealthdata1.sleep)")
-                            Text("Step Count: \(userhealthdata1.stepCount)")
-                            Text("Stress: \(userhealthdata1.stress)")
-                            Text("Temperature: \(userhealthdata1.temperature)")
-                        }
-                    }
-                }
-                .navigationTitle("Health Data2")
-                .navigationBarItems(trailing: Button(action: {
-                    showPopup.toggle()
-                }, label: {
-                    Image(systemName: "plus")
-                }))
-                .sheet(isPresented: $showPopup) {
-                    newhealth(userID: documentIDManager.documentID)
-                        .environmentObject(healthdatafirebasemanager)
-                }
+                
+                
+                //                List {
+                //                    ForEach(healthdatafirebasemanager.healthkitfirebase, id: \.id) { userhealthdata1 in
+                //                        VStack(alignment: .leading) {
+                //                            Text("ID: \(userhealthdata1.id)")
+                //                                .font(.headline)
+                //                            Text("Blood Pressure: \(userhealthdata1.bloodPressure)")
+                //                            Text("Heart Rate: \(userhealthdata1.heartRate)")
+                //                            Text("Sleep: \(userhealthdata1.sleep)")
+                //                            Text("Step Count: \(userhealthdata1.stepCount)")
+                //                            Text("Stress: \(userhealthdata1.stress)")
+                //                            Text("Temperature: \(userhealthdata1.temperature)")
+                //                        }
+                //                    }
+                //                }
+                                .navigationTitle("Family Sharing")
+                
+                //                .navigationBarItems(trailing: Button(action: {
+                //                    showPopup.toggle()
+                //                }, label: {
+                //                    Image(systemName: "plus")
+                //                }))
+                //                .sheet(isPresented: $showPopup) {
+                //                    newhealth(userID: documentIDManager.documentID)
+                //                        .environmentObject(healthdatafirebasemanager)
+                //                }
                 .navigationBarItems(trailing: Button(action: {
                     healthdatafirebasemanager.fetchData(documentID: documentIDManager.documentID)
                 }) {
@@ -249,13 +249,25 @@ struct List2View: View {
             }
         }
     }
-}
-
-struct List2View_Previews: PreviewProvider {
-    static var previews: some View {
-        @EnvironmentObject var documentIDManager: DocumentIDManager
-        newhealth(userID: documentIDManager.documentID) // Initialize without passing any arguments
-            .environmentObject(HealthDataManager())
-            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
+    
+    func generateHealthDataLink() -> String? {
+        // Generate the link with actual health data
+        let heartRate = healthDataManager.heartRate
+        let steps = healthDataManager.stepCount
+        // You can include more health data properties as needed
+        // Example link format: "https://example.com/healthdata?heartRate=70&steps=5000"
+        let link = "https://example.com/healthdata?heartRate=\(heartRate)&steps=\(steps)"
+        return link
+    }
+    
+    struct List2View_Previews: PreviewProvider {
+        static var previews: some View {
+            List2View()
+            //            @EnvironmentObject var documentIDManager: DocumentIDManager
+            //            newhealth(userID: documentIDManager.documentID) // Initialize without passing any arguments
+            //                .environmentObject(HealthDataManager())
+            //                .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
+        }
     }
 }
+

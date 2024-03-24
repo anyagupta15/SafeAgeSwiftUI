@@ -13,14 +13,14 @@ struct MainPage: View {
     @State private var showingmanualFilling = false
     @State private var showingcallingview2 = false
     @State private var isCallingView2Presented = false
-
+    
     @State private var alertDismissed = false
     @StateObject private var healthDataManager = HealthDataManager()
     @EnvironmentObject var healthdatafirebasemanager: HealthDataFirebaseManager
-
+    
     @EnvironmentObject var documentIDManager: DocumentIDManager
     var body: some View {
-      NavigationView { // Wrapping content in NavigationView
+        NavigationView { // Wrapping content in NavigationView
             VStack {
                 HStack{
                     Text("\(formattedDate())")
@@ -29,24 +29,25 @@ struct MainPage: View {
                         .padding(.bottom, 1)
                     Spacer()
                     Button(action: {
-                                    let newData: [String: Any] = [
-                                        "bloodPressure": healthDataManager.bloodPressureSystolic,
-                                        "heartRate": healthDataManager.heartRate,
-                                        "sleep": healthDataManager.sleepHours,
-                                        "stepCount": healthDataManager.stepCount,
-                                        "stress": healthDataManager.stressLevel,
-                                        "temperature": healthDataManager.temperature
-                                    ]
+                        let newData: [String: Any] = [
+                            "bloodPressure": healthDataManager.bloodPressureSystolic,
+                            "heartRate": healthDataManager.heartRate,
+                            "sleep": healthDataManager.sleepHours,
+                            "stepCount": healthDataManager.stepCount,
+                            "stress": healthDataManager.stressLevel,
+                            "temperature": healthDataManager.temperature
+                        ]
                         healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
-                                }) {
-                                    Text("Update")
+                    }) {
+//                        Text("Update")
                     }
                     .padding()
                 }
                 
                 HStack {
                     
-                    Text("Hi Rani !")
+//                    Text("Hi Rani !")
+                    Text("Hi \(userName)!")
                         .font(.title)
                         .bold()
                     
@@ -107,7 +108,7 @@ struct MainPage: View {
                                 
                                 Text("\(Int(healthDataManager.heartRate)) bpm")
                                     .foregroundColor(.white)
-                                    // .padding()
+                                // .padding()
                                     .font(.title3)
                             }.padding()
                         }
@@ -143,7 +144,7 @@ struct MainPage: View {
                                 Text("\(healthDataManager.stepCount) ")
                                     .foregroundColor(.white)
                                     .font(.title3)
-                                    //.padding()
+                                //.padding()
                                 
                             }
                             .padding()
@@ -178,12 +179,12 @@ struct MainPage: View {
                                 Text("\(Int(healthDataManager.temperature )) C")
                                     .foregroundColor(.white)
                                     .font(.title3)
-                                    //.padding()
+                                //.padding()
                             }
                             .padding()
                         }
                     }
-                     // Blood Pressure
+                    // Blood Pressure
                     VStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -206,10 +207,10 @@ struct MainPage: View {
                                 
                                 
                                 Text("\(Int(healthDataManager.bloodPressureSystolic))/\(Int(healthDataManager.bloodPressureDiastolic)) mmHg")
-                                                                
-                                                                    .foregroundColor(.white)
-                                                                    .font(.title3)
-                                                            }
+                                
+                                    .foregroundColor(.white)
+                                    .font(.title3)
+                            }
                             .padding()
                         }
                     }
@@ -272,7 +273,7 @@ struct MainPage: View {
                                 Text("\(Int(healthDataManager.stressLevel)) HRV")
                                     .foregroundColor(.white)
                                     .font(.title3)
-                                    //.padding()
+                                //.padding()
                             }
                             .padding()
                         }
@@ -282,66 +283,84 @@ struct MainPage: View {
                 
                 
             }
-          // Hiding the back button
+            // Hiding the back button
             .navigationBarHidden(true)
-          Button(action: {
-                          showingmanualFilling = true
-                      }) {
-                          Text("Open New Health View")
-                      }
-                      .sheet(isPresented: $showingmanualFilling) {
-                          newhealth(userID: "YourUserID")
-                              .environmentObject(healthDataManager)
-                      }
-           // .navigationBarBackButtonHidden(true)
-                      .onAppear {
-                                      if shouldShowAlert() {
-                                          isShowingDialog = true
-                                      }
-                                      healthDataManager.requestHealthData()
-                                  }
-                                  .alert(isPresented: $isShowingDialog) {
-                                      Alert(
-                                          title: Text("Alert!"),
-                                          message: alertMessage(),
-                                          primaryButton: .default(Text("Action")) {
-                                              showActionButtonMenu = true
-                                          },
-                                          secondaryButton: .destructive(Text("Dismiss")) {
-                                              // Set the state variable to true when the user dismisses the alert
-                                              alertDismissed = true
-                                          }
-                                      )
-                                  }
-                                  .actionSheet(isPresented: $showActionButtonMenu) {
-                                      ActionSheet(title: Text("Choose an action"), buttons: [
-                                          .default(Text("Call Ambulance")) {
-                                              isCallingView2Presented = true
-                                              print("Calling ambulance")
-                                          },
-                                          .default(Text("Call Saved Contact")) {
-                                              isCallingView2Presented = true
-                                              print("Calling saved contact")
-                                          },
-                                          .cancel()
-                                      ])
-                                  }
-                                  .sheet(isPresented: $isCallingView2Presented) {
-                                      CallingView2()
-                                  }
-                                  .padding()
-                              }
-                              .navigationBarHidden(true)
-                              .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in }
-                          }
-
-   
+//            Button(action: {
+//                showingmanualFilling = true
+//            }) {
+//                Text("Open New Health View")
+//            }
+//            .sheet(isPresented: $showingmanualFilling) {
+//                newhealth(userID: "YourUserID")
+//                    .environmentObject(healthDataManager)
+//            }
+            // .navigationBarBackButtonHidden(true)
+          
+//
+//            .onAppear {
+//                if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 || healthDataManager.temperature < Int(36.1) || healthDataManager.temperature > Int(37.2) || healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 100 || healthDataManager.stressLevel > 80 {
+//                    isShowingDialog = true
+//                }
+//                healthDataManager.requestHealthData()
+//            }
+            .onAppear {
+                // Show the alert only if it hasn't been dismissed before
+                if !alertDismissed {
+                    isShowingDialog = true
+                }
+            }
+            .alert(isPresented: $isShowingDialog) {
+                Alert(
+                    title: Text("Alert!"),
+                    message: alertMessage(),
+                    primaryButton: .default(Text("Action")) {
+                        showActionButtonMenu = true
+                    },
+                    secondaryButton: .destructive(Text("Dismiss")) {
+                        // Dismiss the alert and set isShowingDialog to false
+                        isShowingDialog = false
+                        alertDismissed = true
+                        UserDefaults.standard.set(true, forKey: "alertDismissed")
+                    }
+                )
+            }
+           
+            .actionSheet(isPresented: $showActionButtonMenu) {
+                ActionSheet(title: Text("Choose an action"), buttons: [
+                    .default(Text("Call Ambulance")) {
+                        // Check if other properties should be updated here
+                        isCallingView2Presented = true
+                        print("Calling ambulance")
+                    },
+                    .default(Text("Call Saved Contact")) {
+                        // Check if other properties should be updated here
+                        isCallingView2Presented = true
+                        print("Calling saved contact")
+                    },
+                    //  .default(Text("Book Lab Appointment")) {
+                    //   showingmanualFilling.toggle()
+                    //   // Check if other properties should be updated here
+                    //  print("Booking lab appointment")
+                    // },
+                    .cancel()
+                ])
+            }
+            .sheet(isPresented: $isCallingView2Presented) {
+                CallingView2()
+            }
+            .padding()
+        }
+        .navigationBarHidden(true)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in }
+    }
+    
+    
     func formattedDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, yyyy"
         return formatter.string(from: Date())
     }
-   
+    
     func shareLink() {
         // Generate the link to be shared
         if let healthDataLink = generateHealthDataLink() {
@@ -353,7 +372,7 @@ struct MainPage: View {
             UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
         }
     }
-
+    
     func generateHealthDataLink() -> String? {
         // Generate the link with actual health data
         let heartRate = healthDataManager.heartRate
@@ -363,40 +382,36 @@ struct MainPage: View {
         let link = "https://example.com/healthdata?heartRate=\(heartRate)&steps=\(steps)"
         return link
     }
-
-
+    
+    
     func alertMessage() -> Text {
-            if shouldShowAlert() {
-                if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
-                    return Text("Heart Rate is out of the normal range.")
-                } else if healthDataManager.temperature < 36 || healthDataManager.temperature > 37 {
-                    return Text("Temperature is out of the normal range.")
-                    //            } else if healthDataManager.bloodOxygenLevel < 90 {
-                    //                return Text("Blood Oxygen Level is below normal.")
-                    //            }
-                }
-            }
+        if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
+            return Text("Heart Rate is out of normal range.")
+        } else if healthDataManager.temperature < Int(36.1) || healthDataManager.temperature > Int(37.2) {
+            return Text("Temperature is out of normal range.")
+        } else if healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 100 {
+            return Text("Blood Pressure is out of normal range.")
+        } else if healthDataManager.stressLevel > 80 {
+            return Text("Stress level is high.")
+        } else {
             return Text("")
         }
-
-
-        func shouldShowAlert() -> Bool {
-            return !alertDismissed && (
-                healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 ||
-                healthDataManager.temperature < 36 || healthDataManager.temperature > 37 ||
-                healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 90 ||
-                healthDataManager.bloodPressureDiastolic > 90 || healthDataManager.bloodPressureDiastolic < 60
-            )
-        }
     }
+    
+
+}
 
 
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        @EnvironmentObject var documentIDManager: DocumentIDManager
-        newhealth(userID: documentIDManager.documentID) // Initialize without passing any arguments
-            .environmentObject(HealthDataManager())
-            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
+        MainPage()
+//        @EnvironmentObject var documentIDManager: DocumentIDManager
+//        newhealth(userID: "documentIDManager.documentID") // Initialize without passing any arguments
+//            .environmentObject(HealthDataManager())
+//            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
     }
 }
+
+
+

@@ -7,5 +7,5 @@
 
 import SwiftUI
 class DocumentIDManager: ObservableObject {
-    @Published var documentID: String = "0"
+    @Published var documentID: String = "Enter document id"
 }

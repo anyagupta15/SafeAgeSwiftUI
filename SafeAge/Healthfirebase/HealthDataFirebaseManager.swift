@@ -1,7 +1,6 @@
 import SwiftUI
 import Firebase
 import FirebaseFirestore
-
 class HealthDataFirebaseManager: ObservableObject {
     @Published var healthkitfirebase: [healthdata] = []
     var documentIDManager: DocumentIDManager // Remove @EnvironmentObject declaration

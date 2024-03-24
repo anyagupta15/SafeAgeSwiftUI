@@ -11,8 +11,8 @@ import Firebase
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-   // @State private var wrongUsername = 0
-   // @State private var wrongPassword = 0
+    // @State private var wrongUsername = 0
+    // @State private var wrongPassword = 0
     @State private var showingNextScreen = false
     @State private var showingSignUpScreen = false
     @State private var isPasswordVisible = false
@@ -68,7 +68,7 @@ struct LoginView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                   // .border(.red, width: CGFloat(wrongUsername))
+                // .border(.red, width: CGFloat(wrongUsername))
                     .autocapitalization(.none)
                 
                 
@@ -77,7 +77,7 @@ struct LoginView: View {
                     .frame(width:300, height: 50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    //.border(.red, width: CGFloat(wrongPassword))
+                //.border(.red, width: CGFloat(wrongPassword))
                     .autocapitalization(.none)
                 
                 Button(action: {
@@ -90,23 +90,23 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 20)
-//                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-//                            EmptyView()
-//                        }
+                    //                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                    //                            EmptyView()
+                    //                        }
                 }
-//                Button("Login") {
-//                    login()
-//                   // showingNextScreen.toggle()
-//                }
-//                .foregroundColor(.white)
-//                .frame(width: 300, height: 50)
-//                .background(Color.blue)
-//                .cornerRadius(10)
-//                //.padding(.top, 20)
-//                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-//                    EmptyView()
-//                }
-
+                //                Button("Login") {
+                //                    login()
+                //                   // showingNextScreen.toggle()
+                //                }
+                //                .foregroundColor(.white)
+                //                .frame(width: 300, height: 50)
+                //                .background(Color.blue)
+                //                .cornerRadius(10)
+                //                //.padding(.top, 20)
+                //                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                //                    EmptyView()
+                //                }
+                
                 Button(action: {
                     // Action for sign up
                     register()
@@ -117,25 +117,25 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 15)
-//                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-//                            EmptyView()
-//                        }
+                    //                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                    //                            EmptyView()
+                    //                        }
                 }
                 
-//                Button("Signup") {
-//                    register()
-//                   // showingNextScreen.toggle()
-//
-//                }
-//                .foregroundColor(.white)
-//                .frame(width: 300, height: 50)
-//                .background(Color.blue)
-//                .cornerRadius(10)
-//                .padding(.top, 15)
-//                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-//                    EmptyView()
-//                }
-
+                //                Button("Signup") {
+                //                    register()
+                //                   // showingNextScreen.toggle()
+                //
+                //                }
+                //                .foregroundColor(.white)
+                //                .frame(width: 300, height: 50)
+                //                .background(Color.blue)
+                //                .cornerRadius(10)
+                //                .padding(.top, 15)
+                //                NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                //                    EmptyView()
+                //                }
+                
                 .onAppear(){
                     Auth.auth().addStateDidChangeListener {auth, user in
                         if user != nil {
@@ -161,7 +161,7 @@ struct LoginView: View {
                     
                 }
                 .padding(.top, 20)
-                            }
+            }
             .navigationBarHidden(true)
         }
         .padding()
@@ -176,19 +176,19 @@ struct LoginView: View {
     }
     
     func register(){
-            Auth.auth().createUser(withEmail: email, password: password){
-                result, error in
-                if error != nil {
-                    print(error!.localizedDescription)
-                }
+        Auth.auth().createUser(withEmail: email, password: password){
+            result, error in
+            if error != nil {
+                print(error!.localizedDescription)
             }
         }
-
+    }
+    
 }
-                
 
-                struct ContentView_Previews: PreviewProvider {
-                    static var previews: some View {
-                        LoginView()
-                    }
-                }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+    }
+}

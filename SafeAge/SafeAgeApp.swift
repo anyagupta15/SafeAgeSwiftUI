@@ -15,12 +15,15 @@ struct SafeAgeApp: App {
         WindowGroup {
             // Initialize HealthDataFirebaseManager within the body
             let healthDataFirebaseManager = HealthDataFirebaseManager(documentIDManager: documentIDManager)
-            
-            // Provide the environment objects to the TabBar
-            TabBar()
+            SplashView()
                 .environmentObject(healthDataFirebaseManager)
                 .environmentObject(healthDataManager)
                 .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment
+            // Provide the environment objects to the TabBar
+//            TabBar()
+//                .environmentObject(healthDataFirebaseManager)
+//                .environmentObject(healthDataManager)
+//                .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment
         }
     }
 }
