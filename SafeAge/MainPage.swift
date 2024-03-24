@@ -29,6 +29,10 @@ struct MainPage: View {
                         .padding(.bottom, 1)
                     Spacer()
                     Button(action: {
+                        // Fetch the latest health data and update the properties
+                        healthDataManager.requestHealthData()
+                        
+                        // Construct the new data dictionary
                         let newData: [String: Any] = [
                             "bloodPressure": healthDataManager.bloodPressureSystolic,
                             "heartRate": healthDataManager.heartRate,
@@ -37,10 +41,13 @@ struct MainPage: View {
                             "stress": healthDataManager.stressLevel,
                             "temperature": healthDataManager.temperature
                         ]
-                        healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
+                        
+                        // Update the data in the Firebase manager
+                        healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
                     }) {
-//                        Text("Update")
+                        Text("Update")
                     }
+
                     .padding()
                 }
                 
@@ -406,10 +413,10 @@ struct MainPage: View {
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
         MainPage()
-//        @EnvironmentObject var documentIDManager: DocumentIDManager
-//        newhealth(userID: "documentIDManager.documentID") // Initialize without passing any arguments
-//            .environmentObject(HealthDataManager())
-//            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
+        @EnvironmentObject var documentIDManager: DocumentIDManager
+       newhealth(userID: "documentIDManager.documentID") // Initialize without passing any arguments
+           .environmentObject(HealthDataManager())
+           .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
     }
 }
 

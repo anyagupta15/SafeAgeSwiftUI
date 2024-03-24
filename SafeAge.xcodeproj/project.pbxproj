@@ -33,14 +33,6 @@
 		7F88B2882BAF20F900569DE4 /* List2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88B2872BAF20F900569DE4 /* List2View.swift */; };
 		7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5CE52B583ACA00B57FE7 /* Eco.swift */; };
 		7FDE7E6B2BA5C3AB00CDB681 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */; };
-		7FDE7E702BA5C53800CDB681 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E6F2BA5C53800CDB681 /* Dog.swift */; };
-		7FDE7E722BA5C57D00CDB681 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E712BA5C57D00CDB681 /* DataManager.swift */; };
-		7FDE7E762BA5C74C00CDB681 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E752BA5C74C00CDB681 /* ListView.swift */; };
-		7FDE7E782BA5C8D500CDB681 /* NewDogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E772BA5C8D500CDB681 /* NewDogView.swift */; };
-		7FDE7E7B2BA5CC7300CDB681 /* userHealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E7A2BA5CC7300CDB681 /* userHealthData.swift */; };
-		7FDE7E7D2BA5CD5D00CDB681 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E7C2BA5CD5D00CDB681 /* UserDataManager.swift */; };
-		7FDE7E7F2BA5D39700CDB681 /* List1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E7E2BA5D39700CDB681 /* List1View.swift */; };
-		7FDE7E812BA5D5D000CDB681 /* NewHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E802BA5D5D000CDB681 /* NewHealthView.swift */; };
 		7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E822BA61C9000CDB681 /* SecondUser.swift */; };
 		7FDE7E912BA6DC5100CDB681 /* healthdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E902BA6DC5100CDB681 /* healthdata.swift */; };
 		7FDE7E942BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E932BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift */; };
@@ -79,14 +71,6 @@
 		7F88B2872BAF20F900569DE4 /* List2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List2View.swift; sourceTree = "<group>"; };
 		7F8C5CE52B583ACA00B57FE7 /* Eco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco.swift; sourceTree = "<group>"; };
 		7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
-		7FDE7E6F2BA5C53800CDB681 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
-		7FDE7E712BA5C57D00CDB681 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		7FDE7E752BA5C74C00CDB681 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		7FDE7E772BA5C8D500CDB681 /* NewDogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDogView.swift; sourceTree = "<group>"; };
-		7FDE7E7A2BA5CC7300CDB681 /* userHealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userHealthData.swift; sourceTree = "<group>"; };
-		7FDE7E7C2BA5CD5D00CDB681 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
-		7FDE7E7E2BA5D39700CDB681 /* List1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List1View.swift; sourceTree = "<group>"; };
-		7FDE7E802BA5D5D000CDB681 /* NewHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHealthView.swift; sourceTree = "<group>"; };
 		7FDE7E822BA61C9000CDB681 /* SecondUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondUser.swift; sourceTree = "<group>"; };
 		7FDE7E902BA6DC5100CDB681 /* healthdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthdata.swift; sourceTree = "<group>"; };
 		7FDE7E932BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataFirebaseManager.swift; sourceTree = "<group>"; };
@@ -129,28 +113,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7FDE7E6E2BA5C51B00CDB681 /* Read1 */ = {
-			isa = PBXGroup;
-			children = (
-				7FDE7E6F2BA5C53800CDB681 /* Dog.swift */,
-				7FDE7E752BA5C74C00CDB681 /* ListView.swift */,
-				7FDE7E772BA5C8D500CDB681 /* NewDogView.swift */,
-				7FDE7E712BA5C57D00CDB681 /* DataManager.swift */,
-			);
-			path = Read1;
-			sourceTree = "<group>";
-		};
-		7FDE7E792BA5CC5900CDB681 /* readHealth */ = {
-			isa = PBXGroup;
-			children = (
-				7FDE7E7A2BA5CC7300CDB681 /* userHealthData.swift */,
-				7FDE7E802BA5D5D000CDB681 /* NewHealthView.swift */,
-				7FDE7E7E2BA5D39700CDB681 /* List1View.swift */,
-				7FDE7E7C2BA5CD5D00CDB681 /* UserDataManager.swift */,
-			);
-			path = readHealth;
 			sourceTree = "<group>";
 		};
 		7FDE7E8F2BA6DC1800CDB681 /* Healthfirebase */ = {
@@ -203,8 +165,6 @@
 				7FDE7E822BA61C9000CDB681 /* SecondUser.swift */,
 				7F76F8CC2B58085300F0175F /* Settings.swift */,
 				7FDE7E8F2BA6DC1800CDB681 /* Healthfirebase */,
-				7FDE7E792BA5CC5900CDB681 /* readHealth */,
-				7FDE7E6E2BA5C51B00CDB681 /* Read1 */,
 				7F7FABE52B85F82E00F8E86E /* HealthDataManager.swift */,
 				7F807D0C2B8B53580062C605 /* CallingView2.swift */,
 				7F76F8BC2B571BCA00F0175F /* tabbar.swift */,
@@ -314,8 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FDE7E7B2BA5CC7300CDB681 /* userHealthData.swift in Sources */,
-				7FDE7E7D2BA5CD5D00CDB681 /* UserDataManager.swift in Sources */,
 				7FDE7E942BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift in Sources */,
 				84096FE92B930EEE00124DEF /* AppDelegate.swift in Sources */,
 				7F013ED82B8BB4120062A2B7 /* SharingView.swift in Sources */,
@@ -326,9 +284,7 @@
 				7F76F8CD2B58085300F0175F /* Settings.swift in Sources */,
 				7FDE7E6B2BA5C3AB00CDB681 /* LogoutView.swift in Sources */,
 				7F8627512BA8AD7C002CF479 /* DocumentIDManager.swift in Sources */,
-				7FDE7E812BA5D5D000CDB681 /* NewHealthView.swift in Sources */,
 				841BAB812B946A8300BF4A90 /* ViewController.swift in Sources */,
-				7FDE7E782BA5C8D500CDB681 /* NewDogView.swift in Sources */,
 				7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */,
 				7FDE8D772B55446200C4E5E9 /* PageView.swift in Sources */,
 				7FDE7E912BA6DC5100CDB681 /* healthdata.swift in Sources */,
@@ -336,7 +292,6 @@
 				7F76F8B32B565BC800F0175F /* MainPage.swift in Sources */,
 				7FDE8D752B5541D000C4E5E9 /* PageModel.swift in Sources */,
 				7F807D0D2B8B53580062C605 /* CallingView2.swift in Sources */,
-				7FDE7E7F2BA5D39700CDB681 /* List1View.swift in Sources */,
 				7F76F8C12B57960900F0175F /* HeartRateHistoryView.swift in Sources */,
 				7FDFCA982B8745ED0040AF92 /* LoginApple.swift in Sources */,
 				7FDE8D7F2B55C10F00C4E5E9 /* LoginView.swift in Sources */,
@@ -347,10 +302,7 @@
 				7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */,
 				7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */,
 				7F013ED62B8BABFE0062A2B7 /* SplashView.swift in Sources */,
-				7FDE7E762BA5C74C00CDB681 /* ListView.swift in Sources */,
 				7F86274D2BA76F82002CF479 /* newhealth.swift in Sources */,
-				7FDE7E702BA5C53800CDB681 /* Dog.swift in Sources */,
-				7FDE7E722BA5C57D00CDB681 /* DataManager.swift in Sources */,
 				7F88B2882BAF20F900569DE4 /* List2View.swift in Sources */,
 				841BAB832B946FEB00BF4A90 /* SceneDelegate.swift in Sources */,
 			);
