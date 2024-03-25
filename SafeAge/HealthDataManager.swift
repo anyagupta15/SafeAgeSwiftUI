@@ -15,7 +15,7 @@ class HealthDataManager: ObservableObject {
     @Published var temperatureProgress: Int = 0
     @Published var bloodPressureSystolic: Int = 0 // Systolic pressure
     @Published var bloodPressureDiastolic: Int = 0 // Diastolic pressure
-    @Published var bloodPressureProgress: Int = 0
+    @Published var bloodPressureProgress: String = ""
     
     init() {
         requestHealthData()

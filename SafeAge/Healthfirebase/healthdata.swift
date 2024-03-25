@@ -1,15 +1,7 @@
-//
-//  healthdata.swift
-//  SafeAge
-//
-//  Created by user1 on 17/03/24.
-//
-import SwiftUI
-
-
-struct healthdata: Identifiable {
+struct healthdata {
     var id: String
     var bloodPressure: Int
+    var bpd: Int // Define bpd property
     var heartRate: Int
     var sleep: Int
     var stepCount: Int

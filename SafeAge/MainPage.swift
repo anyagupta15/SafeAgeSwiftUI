@@ -1,7 +1,10 @@
 import SwiftUI
 import HealthKit
+import Combine
+import UserNotifications
 
 struct MainPage: View {
+    
     @State private var isActionSheetPresented = false
     @State private var userName = "Rohan"
     @State private var progressValue: Float = 0.5
@@ -15,11 +18,15 @@ struct MainPage: View {
     @State private var isCallingView2Presented = false
     
     @State private var alertDismissed = false
+    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    @State private var currentTime = Date()
+    
     @StateObject private var healthDataManager = HealthDataManager()
     @EnvironmentObject var healthdatafirebasemanager: HealthDataFirebaseManager
     
     @EnvironmentObject var documentIDManager: DocumentIDManager
     var body: some View {
+        
         NavigationView { // Wrapping content in NavigationView
             VStack {
                 HStack{
@@ -35,6 +42,7 @@ struct MainPage: View {
                         // Construct the new data dictionary
                         let newData: [String: Any] = [
                             "bloodPressure": healthDataManager.bloodPressureSystolic,
+                            "bpd":healthDataManager.bloodPressureDiastolic,
                             "heartRate": healthDataManager.heartRate,
                             "sleep": healthDataManager.sleepHours,
                             "stepCount": healthDataManager.stepCount,
@@ -45,7 +53,11 @@ struct MainPage: View {
                         // Update the data in the Firebase manager
                         healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
                     }) {
-                        Text("Update")
+                        Image(systemName: "arrow.clockwise.circle.fill")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                            .padding(.trailing, -10)
+                        
                     }
 
                     .padding()
@@ -54,7 +66,7 @@ struct MainPage: View {
                 HStack {
                     
 //                    Text("Hi Rani !")
-                    Text("Hi \(userName)!")
+                    Text("Greetings!")
                         .font(.title)
                         .bold()
                     
@@ -88,6 +100,7 @@ struct MainPage: View {
                 HStack {
                     // Heart Rate
                     VStack {
+                        
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .frame(height: 150)
@@ -292,6 +305,26 @@ struct MainPage: View {
             }
             // Hiding the back button
             .navigationBarHidden(true)
+            .onReceive(timer) { input in
+                            // This closure will be executed every minute
+                            self.currentTime = input
+                healthDataManager.requestHealthData()
+                
+                // Construct the new data dictionary
+                let newData: [String: Any] = [
+                    "bloodPressure": healthDataManager.bloodPressureSystolic,
+                    "bpd":healthDataManager.bloodPressureDiastolic,
+                    "heartRate": healthDataManager.heartRate,
+                    "sleep": healthDataManager.sleepHours,
+                    "stepCount": healthDataManager.stepCount,
+                    "stress": healthDataManager.stressLevel,
+                    "temperature": healthDataManager.temperature
+                ]
+                            // Call your function here
+                healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
+                        
+                        }
+            
 //            Button(action: {
 //                showingmanualFilling = true
 //            }) {
@@ -311,15 +344,20 @@ struct MainPage: View {
 //                healthDataManager.requestHealthData()
 //            }
             .onAppear {
+                healthDataManager.requestHealthData()
+                
+                
+                
                 // Show the alert only if it hasn't been dismissed before
                 if !alertDismissed {
                     isShowingDialog = true
                 }
             }
             .alert(isPresented: $isShowingDialog) {
-                Alert(
+                let alert = Alert(
                     title: Text("Alert!"),
-                    message: alertMessage(),
+                    message: Text(alertMessage()),
+
                     primaryButton: .default(Text("Action")) {
                         showActionButtonMenu = true
                     },
@@ -330,8 +368,11 @@ struct MainPage: View {
                         UserDefaults.standard.set(true, forKey: "alertDismissed")
                     }
                 )
+                
+              
+                return alert
             }
-           
+
             .actionSheet(isPresented: $showActionButtonMenu) {
                 ActionSheet(title: Text("Choose an action"), buttons: [
                     .default(Text("Call Ambulance")) {
@@ -361,6 +402,8 @@ struct MainPage: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in }
     }
     
+  
+
     
     func formattedDate() -> String {
         let formatter = DateFormatter()
@@ -391,19 +434,20 @@ struct MainPage: View {
     }
     
     
-    func alertMessage() -> Text {
+    func alertMessage() -> String {
         if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
-            return Text("Heart Rate is out of normal range.")
+            return "Heart Rate is out of normal range."
         } else if healthDataManager.temperature < Int(36.1) || healthDataManager.temperature > Int(37.2) {
-            return Text("Temperature is out of normal range.")
+            return "Temperature is out of normal range."
         } else if healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 100 {
-            return Text("Blood Pressure is out of normal range.")
+            return "Blood Pressure is out of normal range."
         } else if healthDataManager.stressLevel > 80 {
-            return Text("Stress level is high.")
+            return "Stress level is high."
         } else {
-            return Text("")
+            return ""
         }
     }
+
     
 
 }
@@ -419,6 +463,3 @@ struct MainPage_Previews: PreviewProvider {
            .environmentObject(DocumentIDManager()) // Inject DocumentIDManager
     }
 }
-
-
-

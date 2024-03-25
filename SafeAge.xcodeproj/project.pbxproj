@@ -32,6 +32,8 @@
 		7F8627512BA8AD7C002CF479 /* DocumentIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */; };
 		7F88B2882BAF20F900569DE4 /* List2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88B2872BAF20F900569DE4 /* List2View.swift */; };
 		7F8C5CE62B583ACA00B57FE7 /* Eco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C5CE52B583ACA00B57FE7 /* Eco.swift */; };
+		7F8FB9312BB204C50079E898 /* enterDocId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8FB9302BB204C50079E898 /* enterDocId.swift */; };
+		7F8FB9332BB20AEA0079E898 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8FB9322BB20AEA0079E898 /* AuthViewModel.swift */; };
 		7FDE7E6B2BA5C3AB00CDB681 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */; };
 		7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E822BA61C9000CDB681 /* SecondUser.swift */; };
 		7FDE7E912BA6DC5100CDB681 /* healthdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE7E902BA6DC5100CDB681 /* healthdata.swift */; };
@@ -70,6 +72,8 @@
 		7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentIDManager.swift; sourceTree = "<group>"; };
 		7F88B2872BAF20F900569DE4 /* List2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List2View.swift; sourceTree = "<group>"; };
 		7F8C5CE52B583ACA00B57FE7 /* Eco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco.swift; sourceTree = "<group>"; };
+		7F8FB9302BB204C50079E898 /* enterDocId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enterDocId.swift; sourceTree = "<group>"; };
+		7F8FB9322BB20AEA0079E898 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		7FDE7E6A2BA5C3AB00CDB681 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		7FDE7E822BA61C9000CDB681 /* SecondUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondUser.swift; sourceTree = "<group>"; };
 		7FDE7E902BA6DC5100CDB681 /* healthdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthdata.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			children = (
 				7FDE7E902BA6DC5100CDB681 /* healthdata.swift */,
 				7F88B2872BAF20F900569DE4 /* List2View.swift */,
+				7F8FB9302BB204C50079E898 /* enterDocId.swift */,
 				7F86274C2BA76F82002CF479 /* newhealth.swift */,
 				7F8627502BA8AD7C002CF479 /* DocumentIDManager.swift */,
 				7FDE7E932BA6DCAE00CDB681 /* HealthDataFirebaseManager.swift */,
@@ -150,6 +155,7 @@
 				84096FE72B930D5200124DEF /* Info.plist */,
 				7F7FABE92B85FF9100F8E86E /* SafeAge.entitlements */,
 				7FDE8D662B55406900C4E5E9 /* SafeAgeApp.swift */,
+				7F8FB9322BB20AEA0079E898 /* AuthViewModel.swift */,
 				841BAB822B946FEB00BF4A90 /* SceneDelegate.swift */,
 				841BAB802B946A8300BF4A90 /* ViewController.swift */,
 				84096FE82B930EEE00124DEF /* AppDelegate.swift */,
@@ -286,6 +292,7 @@
 				7F8627512BA8AD7C002CF479 /* DocumentIDManager.swift in Sources */,
 				841BAB812B946A8300BF4A90 /* ViewController.swift in Sources */,
 				7FDE8D692B55406900C4E5E9 /* ContentView.swift in Sources */,
+				7F8FB9312BB204C50079E898 /* enterDocId.swift in Sources */,
 				7FDE8D772B55446200C4E5E9 /* PageView.swift in Sources */,
 				7FDE7E912BA6DC5100CDB681 /* healthdata.swift in Sources */,
 				7F76F8CB2B57D10B00F0175F /* HealthProfile.swift in Sources */,
@@ -302,6 +309,7 @@
 				7F7FABE62B85F82E00F8E86E /* HealthDataManager.swift in Sources */,
 				7FDE7E832BA61C9000CDB681 /* SecondUser.swift in Sources */,
 				7F013ED62B8BABFE0062A2B7 /* SplashView.swift in Sources */,
+				7F8FB9332BB20AEA0079E898 /* AuthViewModel.swift in Sources */,
 				7F86274D2BA76F82002CF479 /* newhealth.swift in Sources */,
 				7F88B2882BAF20F900569DE4 /* List2View.swift in Sources */,
 				841BAB832B946FEB00BF4A90 /* SceneDelegate.swift in Sources */,

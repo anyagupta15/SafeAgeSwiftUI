@@ -13,11 +13,11 @@ struct SettingsView: View {
 
                     List {
                         Section(header: Text("Account")) {
-                            NavigationLink(destination: NavigationView {
-                                HealthProfile()
-                            }) {
-                                Label("Profile", systemImage: "person.circle")
-                            }
+//                            NavigationLink(destination: NavigationView {
+//                                HealthProfile()
+//                            }) {
+//                                Label("Profile", systemImage: "person.circle")
+//                            }
 
 //                            NavigationLink(destination: Text("Emergency Contacts")) {
 //                                Label("Emergency Contacts", systemImage: "person.crop.circle.badge.plus")
@@ -27,32 +27,32 @@ struct SettingsView: View {
                                                         }
                         }
 
-                        Section(header: Text("Sharing with")) {
-
-                            DisclosureGroup(
-                                isExpanded: $isPriyaExpanded,
-                                content: {
-                                    NavigationLink(destination: Text("Stop Sharing with Priya")) {
-                                        Label("Stop Sharing with Priya", systemImage: "person")
-                                    }
-                                },
-                                label: {
-                                    Label("Priya", systemImage: "person")
-                                }
-                            )
-
-                            DisclosureGroup(
-                                isExpanded: $isRohanExpanded,
-                                content: {
-                                    NavigationLink(destination: Text("Stop sharing it with Rohan")) {
-                                        Label("Stop sharing with Rohan", systemImage: "person")
-                                    }
-                                },
-                                label: {
-                                    Label("Rohan", systemImage: "person")
-                                }
-                            )
-                        }
+//                        Section(header: Text("Sharing with")) {
+//
+//                            DisclosureGroup(
+//                                isExpanded: $isPriyaExpanded,
+//                                content: {
+//                                    NavigationLink(destination: Text("Stop Sharing with Priya")) {
+//                                        Label("Stop Sharing with Priya", systemImage: "person")
+//                                    }
+//                                },
+//                                label: {
+//                                    Label("Priya", systemImage: "person")
+//                                }
+//                            )
+//
+//                            DisclosureGroup(
+//                                isExpanded: $isRohanExpanded,
+//                                content: {
+//                                    NavigationLink(destination: Text("Stop sharing it with Rohan")) {
+//                                        Label("Stop sharing with Rohan", systemImage: "person")
+//                                    }
+//                                },
+//                                label: {
+//                                    Label("Rohan", systemImage: "person")
+//                                }
+//                            )
+//                        }
                     }
                     .navigationBarTitle("Settings")
                 }

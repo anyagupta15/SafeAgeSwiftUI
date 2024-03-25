@@ -4,6 +4,19 @@ struct SharingView: View {
     @State private var isShareSheetPresented = false
     @State private var link = "xDEgLK4WxkTJmrp1edbO"
     @State private var showPopup = false
+    
+    func shareContent() {
+        // Create the message to share
+        let message = "Check out this link: \(link)"
+        
+        // Create an instance of UIActivityViewController
+        let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+        
+        // Present the UIActivityViewController
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+    }
+
+
  //  @EnvironmentObject var documentIDManager: DocumentIDManager
     var body: some View {
         ScrollView {
@@ -34,13 +47,13 @@ struct SharingView: View {
                 Spacer()
 
                 Button(action: {
-                    isShareSheetPresented.toggle()
+                    shareContent()
                 }) {
                     Label("  Share  ", systemImage: "arrowshape.turn.up.right.circle")
                 }
-                .sheet(isPresented: $isShareSheetPresented) {
-                    ShareSheet(activityItems: [URL(string: "xDEgLK4WxkTJmrp1edbO")!])
-                }
+//                .sheet(isPresented: $isShareSheetPresented) {
+//                    ShareSheet(activityItems: [URL(string: "xDEgLK4WxkTJmrp1edbO")!])
+//                }
                 .padding()
                 .background(Color.blue)
                 .foregroundColor(.white)

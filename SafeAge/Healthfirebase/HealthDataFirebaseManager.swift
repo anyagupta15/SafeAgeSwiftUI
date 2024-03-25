@@ -7,8 +7,9 @@ class HealthDataFirebaseManager: ObservableObject {
     
     init(documentIDManager: DocumentIDManager) {
         self.documentIDManager = documentIDManager
-        fetchData(documentID: documentIDManager.documentID) // Fetch data using initial document ID
+        //fetchData(documentID: documentIDManager.documentID) // Fetch data using initial document ID
     }
+   
     
     func fetchData(documentID: String) {
         let db = Firestore.firestore()
@@ -19,6 +20,7 @@ class HealthDataFirebaseManager: ObservableObject {
                 let data = document.data() ?? [:]
                 let id = document.documentID
                 let bloodPressure = data["bloodPressure"] as? Int ?? 0
+                let bloodPressureD = data["bpd"] as? Int ?? 0
                 let heartRate = data["heartRate"] as? Int ?? 0
                 let sleepString = data["sleep"] as? Int ?? 0
                 let stepCountString = data["stepCount"] as? Int ?? 0
@@ -30,7 +32,7 @@ class HealthDataFirebaseManager: ObservableObject {
                 // let stepCount = Int(stepCountString) ?? 0
                 
                 // Update healthkitfirebase with data from the document
-                self.healthkitfirebase = [healthdata(id: id, bloodPressure: bloodPressure, heartRate: heartRate, sleep: sleepString, stepCount: stepCountString, stress: stress, temperature: temperature)]
+                self.healthkitfirebase = [healthdata(id: id, bloodPressure: bloodPressure, bpd: bloodPressureD, heartRate: heartRate, sleep: sleepString, stepCount: stepCountString, stress: stress, temperature: temperature)]
             } else {
                 print("Document does not exist")
             }
@@ -40,6 +42,7 @@ class HealthDataFirebaseManager: ObservableObject {
     func updateData(id: String, newdata: [String: Any]) {
         let db = Firestore.firestore()
         let docRef = db.collection("userHealthData").document(id)
+        print("hello")
 
         docRef.updateData(newdata) { error in
             if let error = error {

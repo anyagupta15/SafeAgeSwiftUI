@@ -7,10 +7,12 @@ struct List2View: View {
     @State private var link: String = "xDEgLK4WxkTJmrp1edbO" // State variable to hold the link
     @EnvironmentObject var healthDataManager: HealthDataManager
     
+    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    
     var body: some View {
             NavigationView {
                 VStack {
-                    TextField("Enter document id", text: $documentIDManager.documentID)
+                    Text("Shared Data")
                     
                 //                Button(action: {
                 //                    let newData: [String: Any] = [
@@ -50,8 +52,12 @@ struct List2View: View {
                                             .bold()
                                             .foregroundColor(.white)
                                             .font(.title3)
+                                        HStack{
+                                            Text("\(userhealthdata1.bloodPressure)")
+                                            Text("/")
+                                            Text("\(userhealthdata1.bpd)")
+                                        }
                                         
-                                        Text("\(userhealthdata1.bloodPressure)")
                                             .foregroundColor(.white)
                                             .font(.title3)
                                     }
@@ -241,12 +247,22 @@ struct List2View: View {
                 //                    newhealth(userID: documentIDManager.documentID)
                 //                        .environmentObject(healthdatafirebasemanager)
                 //                }
-                .navigationBarItems(trailing: Button(action: {
-                    healthdatafirebasemanager.fetchData(documentID: documentIDManager.documentID)
-                }) {
-                    Text("Refresh Data")
-                })
+                                .navigationBarItems(trailing: Button(action: {
+                                    showPopup.toggle()
+                                }) {
+                                    Text("Add Another")
+                                })
+                                .sheet(isPresented: $showPopup) {
+                                    // Present the sheet containing enterDocID() functionality
+                                    enterDocId()
+                                };
+
+
             }
+                .onReceive(timer) { _ in
+                                // Call fetchData every 30 seconds
+                                healthdatafirebasemanager.fetchData(documentID: documentIDManager.documentID)
+                            }
         }
     }
     
@@ -270,4 +286,3 @@ struct List2View: View {
         }
     }
 }
-

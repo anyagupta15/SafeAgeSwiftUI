@@ -90,9 +90,9 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 20)
-                    //                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-                    //                            EmptyView()
-                    //                        }
+                                            NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                                                EmptyView()
+                                            }
                 }
                 //                Button("Login") {
                 //                    login()
@@ -117,9 +117,9 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.top, 15)
-                    //                        NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
-                    //                            EmptyView()
-                    //                        }
+                                            NavigationLink(destination: TabBar(), isActive: $showingNextScreen) {
+                                                EmptyView()
+                                            }
                 }
                 
                 //                Button("Signup") {
@@ -144,23 +144,23 @@ struct LoginView: View {
                     }
                 }
                 
-                HStack {
-                    Spacer()
-                    Button("New User ?") {
-                        showingSignUpScreen.toggle()
-                    }
-                    .foregroundColor(.blue)
-                    .padding(.horizontal, 40)
-                    .font(.callout)
-                    .frame(alignment: .trailing)
-                    .padding(.trailing, 8)
-                    
-                    NavigationLink(destination: signup_page(), isActive: $showingSignUpScreen) {
-                        EmptyView()
-                    }
-                    
-                }
-                .padding(.top, 20)
+//                HStack {
+//                    Spacer()
+//                    Button("New User ?") {
+//                        showingSignUpScreen.toggle()
+//                    }
+//                    .foregroundColor(.blue)
+//                    .padding(.horizontal, 40)
+//                    .font(.callout)
+//                    .frame(alignment: .trailing)
+//                    .padding(.trailing, 8)
+//                    
+//                    NavigationLink(destination: signup_page(), isActive: $showingSignUpScreen) {
+//                        EmptyView()
+//                    }
+//                    
+//                }
+//                .padding(.top, 20)
             }
             .navigationBarHidden(true)
         }
