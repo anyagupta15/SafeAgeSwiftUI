@@ -8,7 +8,7 @@ struct SafeAgeApp: App {
     @StateObject var documentIDManager = DocumentIDManager()
     
     // Environment variable to check user's logged-in state
-    @StateObject var authViewModel = AuthViewModel()
+   // @StateObject var authViewModel = AuthViewModel()
 
     func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -30,17 +30,12 @@ struct SafeAgeApp: App {
             // Initialize HealthDataFirebaseManager within the body
             let healthDataFirebaseManager = HealthDataFirebaseManager(documentIDManager: documentIDManager)
             // Check the logged-in state and display appropriate view
-            if authViewModel.isLoggedIn {
                 // If user is logged in, show the main content
-                TabBar()
+                SplashView()
                     .environmentObject(healthDataFirebaseManager)
                     .environmentObject(healthDataManager)
                     .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment
-            } else {
-                // If user is not logged in, show the login view
-                LoginView()
-                    .environmentObject(authViewModel)
-            }
+            
         }
     }
 }

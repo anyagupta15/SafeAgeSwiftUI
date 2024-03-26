@@ -19,7 +19,7 @@ struct enterDocId: View {
         NavigationView {
             
             VStack {
-                AuthView()
+                //AuthView()
                 TextField("Enter User A Code Here", text: $documentIDManager.documentID)
                 
                 

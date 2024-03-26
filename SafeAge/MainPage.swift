@@ -18,7 +18,7 @@ struct MainPage: View {
     @State private var isCallingView2Presented = false
     
     @State private var alertDismissed = false
-    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    //let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
     @State private var currentTime = Date()
     
     @StateObject private var healthDataManager = HealthDataManager()
@@ -51,7 +51,7 @@ struct MainPage: View {
                         ]
                         
                         // Update the data in the Firebase manager
-                        healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
+                        healthdatafirebasemanager.updateData(id: "xDEgLK4WxkTJmrp1edbO", newdata: newData)
                     }) {
                         Image(systemName: "arrow.clockwise.circle.fill")
                             .font(.title)
@@ -305,25 +305,25 @@ struct MainPage: View {
             }
             // Hiding the back button
             .navigationBarHidden(true)
-            .onReceive(timer) { input in
-                            // This closure will be executed every minute
-                            self.currentTime = input
-                healthDataManager.requestHealthData()
-                
-                // Construct the new data dictionary
-                let newData: [String: Any] = [
-                    "bloodPressure": healthDataManager.bloodPressureSystolic,
-                    "bpd":healthDataManager.bloodPressureDiastolic,
-                    "heartRate": healthDataManager.heartRate,
-                    "sleep": healthDataManager.sleepHours,
-                    "stepCount": healthDataManager.stepCount,
-                    "stress": healthDataManager.stressLevel,
-                    "temperature": healthDataManager.temperature
-                ]
-                            // Call your function here
-                healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
-                        
-                        }
+//            .onReceive(timer) { input in
+//                            // This closure will be executed every minute
+//                            self.currentTime = input
+//                healthDataManager.requestHealthData()
+//                
+//                // Construct the new data dictionary
+//                let newData: [String: Any] = [
+//                    "bloodPressure": healthDataManager.bloodPressureSystolic,
+//                    "bpd":healthDataManager.bloodPressureDiastolic,
+//                    "heartRate": healthDataManager.heartRate,
+//                    "sleep": healthDataManager.sleepHours,
+//                    "stepCount": healthDataManager.stepCount,
+//                    "stress": healthDataManager.stressLevel,
+//                    "temperature": healthDataManager.temperature
+//                ]
+//                            // Call your function here
+//                healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
+//                        
+//                        }
             
 //            Button(action: {
 //                showingmanualFilling = true

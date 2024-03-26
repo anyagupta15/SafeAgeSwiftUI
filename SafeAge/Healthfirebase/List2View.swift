@@ -7,6 +7,14 @@ struct List2View: View {
     @State private var link: String = "xDEgLK4WxkTJmrp1edbO" // State variable to hold the link
     @EnvironmentObject var healthDataManager: HealthDataManager
     
+    @State private var isCallingView3Presented = false
+    
+    
+    @State private var isShowingDialog2 = false
+    @State private var showActionButtonMenu2 = false
+    
+    @State private var alertDismissed2 = false
+    
     let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -263,8 +271,75 @@ struct List2View: View {
                                 // Call fetchData every 30 seconds
                                 healthdatafirebasemanager.fetchData(documentID: documentIDManager.documentID)
                             }
+                .onAppear {
+                    if !alertDismissed2 {
+                        isShowingDialog2 = true
+                    }
+                }
+
+                .alert(isPresented: $isShowingDialog2) {
+                    let defaultHealthData = healthdata(id: "", bloodPressure: 0, bpd: 0, heartRate: 0, sleep: 0, stepCount: 0, stress: 0, temperature: 0) // Create a default health data object with default values
+                    let alert = Alert(
+                        title: Text("Alert!"),
+                        message: Text(alertMessage2(userhealthdata1: healthdatafirebasemanager.healthkitfirebase.first ?? defaultHealthData)), // Pass the default health data object
+                        primaryButton: .default(Text("Action")) {
+                            showActionButtonMenu2 = true
+                        },
+                        secondaryButton: .destructive(Text("Dismiss")) {
+                            // Dismiss the alert and set isShowingDialog to false
+                            isShowingDialog2 = false
+                            alertDismissed2 = true
+                            UserDefaults.standard.set(true, forKey: "alertDismissed")
+                        }
+                    )
+                    return alert
+                }
+                
+                .actionSheet(isPresented: $showActionButtonMenu2) {
+                    ActionSheet(title: Text("Choose an action"), buttons: [
+                        .default(Text("Call Ambulance")) {
+                            // Check if other properties should be updated here
+                            isCallingView3Presented = true
+                            print("Calling ambulance")
+                        },
+                        .default(Text("Call Saved Contact")) {
+                            // Check if other properties should be updated here
+                            isCallingView3Presented = true
+                            print("Calling saved contact")
+                        },
+                        //  .default(Text("Book Lab Appointment")) {
+                        //   showingmanualFilling.toggle()
+                        //   // Check if other properties should be updated here
+                        //  print("Booking lab appointment")
+                        // },
+                        .cancel()
+                    ])
+                }
+                
+                .sheet(isPresented: $isCallingView3Presented) {
+                    CallingView2()
+                }
+//                .onAppear {
+//                    isShowingDialog2 = true
+//                }
         }
     }
+    
+    func alertMessage2(userhealthdata1: healthdata) -> String {
+        if userhealthdata1.heartRate < 60 || userhealthdata1.heartRate > 90 {
+            return "Heart Rate is out of normal range."
+        } else if userhealthdata1.temperature < 36 || userhealthdata1.temperature > 37{
+            return "Temperature is out of normal range."
+        } else if userhealthdata1.bloodPressure > 140 || userhealthdata1.bloodPressure < 100 {
+            return "Blood Pressure is out of normal range."
+        } else if userhealthdata1.stress > 80 {
+            return "Stress level is high."
+        } else {
+            return ""
+        }
+    }
+
+
     
     func generateHealthDataLink() -> String? {
         // Generate the link with actual health data

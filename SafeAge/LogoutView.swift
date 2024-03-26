@@ -10,7 +10,7 @@ struct LogoutView: View {
     @State private var isLoggedOut = false
 
     var body: some View {
-        NavigationView {
+       // NavigationView {
             if isLoggedOut {
                 LoginView()
             } else {
@@ -32,7 +32,7 @@ struct LogoutView: View {
                 }
                 .navigationBarHidden(true)
             }
-        }
+       // }
     }
     
     private func signOut() {
