@@ -4,13 +4,18 @@ struct SplashView: View {
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    
     var body: some View {
         
         if isActive {
             ContentView()
         } else {
             VStack {
+                Image("Screenshot 2024-03-23 112233")
+                                   .resizable()
+                                   .aspectRatio(contentMode: .fit)
+                                   .frame(width: 150, height: 150)
+                                   .padding()
+                                   
                 HStack(spacing: 0) {
                     Text("S")
                         .foregroundColor(.red.opacity(0.8))

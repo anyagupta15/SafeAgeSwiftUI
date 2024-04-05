@@ -1,3 +1,4 @@
+
 import SwiftUI
 import HealthKit
 import Combine
@@ -46,7 +47,7 @@ struct MainPage: View {
                             "heartRate": healthDataManager.heartRate,
                             "sleep": healthDataManager.sleepHours,
                             "stepCount": healthDataManager.stepCount,
-                            "stress": healthDataManager.stressLevel,
+                            "stress": healthDataManager.respiratoryRate,
                             "temperature": healthDataManager.temperature
                         ]
                         
@@ -278,19 +279,19 @@ struct MainPage: View {
                             VStack(alignment: .leading, spacing: 10) {
                                 HStack {
                                     Spacer()
-                                    Image(systemName: "light.min")
+                                    Image(systemName: "lungs.fill")
                                         .resizable()
                                         .frame(width: 40, height: 40)
                                         .padding(.trailing, 10)
                                         .foregroundColor(.white)
                                 }
-                                Text("Stress")
+                                Text("Respirator Rate")
                                     .bold()
                                     .foregroundColor(.white)
                                     .font(.title2)
                                 
                                 
-                                Text("\(Int(healthDataManager.stressLevel)) HRV")
+                                Text("\(Int(healthDataManager.respiratoryRate))/min")
                                     .foregroundColor(.white)
                                     .font(.title3)
                                 //.padding()
@@ -309,7 +310,7 @@ struct MainPage: View {
 //                            // This closure will be executed every minute
 //                            self.currentTime = input
 //                healthDataManager.requestHealthData()
-//                
+//
 //                // Construct the new data dictionary
 //                let newData: [String: Any] = [
 //                    "bloodPressure": healthDataManager.bloodPressureSystolic,
@@ -322,7 +323,7 @@ struct MainPage: View {
 //                ]
 //                            // Call your function here
 //                healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData)
-//                        
+//
 //                        }
             
 //            Button(action: {
@@ -435,14 +436,14 @@ struct MainPage: View {
     
     
     func alertMessage() -> String {
-        if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 90 {
+        if healthDataManager.heartRate < 60 || healthDataManager.heartRate > 100 {
             return "Heart Rate is out of normal range."
         } else if healthDataManager.temperature < Int(36.1) || healthDataManager.temperature > Int(37.2) {
             return "Temperature is out of normal range."
         } else if healthDataManager.bloodPressureSystolic > 140 || healthDataManager.bloodPressureSystolic < 100 {
             return "Blood Pressure is out of normal range."
-        } else if healthDataManager.stressLevel > 80 {
-            return "Stress level is high."
+        } else if healthDataManager.respiratoryRate < 15 {
+            return "Respiratory Rate is low."
         } else {
             return ""
         }

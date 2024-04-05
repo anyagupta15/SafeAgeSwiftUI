@@ -9,13 +9,13 @@ class HealthDataManager: ObservableObject {
     @Published var stepCountProgress: Int = 0
     @Published var sleepHours: Int = 0
     @Published var sleepProgress: Int = 0
-    @Published var stressLevel: Int = 0
-    @Published var stressProgress: Int = 0
+   
     @Published var temperature: Int = 0
     @Published var temperatureProgress: Int = 0
     @Published var bloodPressureSystolic: Int = 0 // Systolic pressure
     @Published var bloodPressureDiastolic: Int = 0 // Diastolic pressure
-    @Published var bloodPressureProgress: String = ""
+    @Published var bloodPressureProgress: Int = 0 // Progress for blood pressure
+    @Published var respiratoryRate: Int = 0 // Respiratory rate
     
     init() {
         requestHealthData()
@@ -27,22 +27,23 @@ class HealthDataManager: ObservableObject {
         let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
         let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
-        let stressType = HKObjectType.categoryType(forIdentifier: .appleStandHour)!
+  
         let temperatureType = HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         let bloodPressureSystolicType = HKQuantityType.quantityType(forIdentifier: .bloodPressureSystolic)!
         let bloodPressureDiastolicType = HKQuantityType.quantityType(forIdentifier: .bloodPressureDiastolic)!
+        let respiratoryRateType = HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!
 
-        let typesToRead: Set<HKObjectType> = [heartRateType, stepCountType, sleepType, stressType, temperatureType, bloodPressureSystolicType, bloodPressureDiastolicType]
+        let typesToRead: Set<HKObjectType> = [heartRateType, stepCountType, sleepType,temperatureType, bloodPressureSystolicType, bloodPressureDiastolicType, respiratoryRateType]
 
         healthStore.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
             if success {
                 self.fetchHeartRate()
                 self.fetchStepCount()
                 self.fetchSleepData()
-                self.fetchStressData()
+            
                 self.fetchTemperature()
                 self.fetchBloodPressure()
-                // Add other data fetching methods as needed
+                self.fetchRespiratoryRate()
             }
         }
     }
@@ -92,28 +93,7 @@ class HealthDataManager: ObservableObject {
         healthStore.execute(query)
     }
 
-    private func fetchStressData() {
-        guard let heartRateVariabilityType = HKQuantityType.quantityType(forIdentifier: .heartRateVariabilitySDNN) else {
-            print("Heart Rate Variability data type is not available.")
-            return
-        }
-        
-        let query = HKStatisticsQuery(quantityType: heartRateVariabilityType, quantitySamplePredicate: nil, options: .discreteAverage) { query, result, error in
-            if let result = result, let value = result.averageQuantity() {
-                DispatchQueue.main.async {
-                    // Assuming higher heart rate variability indicates lower stress
-                    // Adjust this calculation according to your understanding of stress and HRV
-                    self.stressLevel = Int(100.0 - value.doubleValue(for: HKUnit.secondUnit(with: .milli)))
-                    // Calculate progress as needed
-                    self.stressProgress = self.stressLevel / 100
-                }
-            }
-        }
-        
-        healthStore.execute(query)
-    }
-
-
+    
     private func fetchTemperature() {
         let temperatureType = HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!
         let query = HKStatisticsQuery(quantityType: temperatureType, quantitySamplePredicate: nil, options: .discreteAverage) { query, result, error in
@@ -148,6 +128,24 @@ class HealthDataManager: ObservableObject {
         
         healthStore.execute(query)
         healthStore.execute(query2)
+    }
+    
+    private func fetchRespiratoryRate() {
+        let respiratoryRateType = HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!
+        
+        let calendar = Calendar.current
+        let now = Date()
+        let startOfDay = calendar.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: respiratoryRateType, quantitySamplePredicate: predicate, options: .discreteAverage) { query, result, error in
+            if let result = result, let value = result.averageQuantity() {
+                DispatchQueue.main.async {
+                    self.respiratoryRate = Int(value.doubleValue(for: HKUnit.init(from: "count/min")))
+                }
+            }
+        }
+        healthStore.execute(query)
     }
 }
 

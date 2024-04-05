@@ -32,10 +32,9 @@ struct SafeAgeApp: App {
             // Check the logged-in state and display appropriate view
                 // If user is logged in, show the main content
                 SplashView()
-                    .environmentObject(healthDataFirebaseManager)
+                 .environmentObject(healthDataFirebaseManager)
                     .environmentObject(healthDataManager)
                     .environmentObject(documentIDManager) // Inject DocumentIDManager into the environment
-            
         }
     }
 }

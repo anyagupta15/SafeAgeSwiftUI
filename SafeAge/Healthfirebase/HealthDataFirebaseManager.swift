@@ -9,8 +9,6 @@ class HealthDataFirebaseManager: ObservableObject {
         self.documentIDManager = documentIDManager
         //fetchData(documentID: documentIDManager.documentID) // Fetch data using initial document ID
     }
-   
-    
     func fetchData(documentID: String) {
         let db = Firestore.firestore()
         let docRef = db.collection("userHealthData").document(documentID) // Use provided document ID

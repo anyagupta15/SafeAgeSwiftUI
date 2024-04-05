@@ -43,7 +43,7 @@ struct newhealth: View {
                                 "heartRate": healthDataManager.heartRate,
                                 "sleep": healthDataManager.sleepHours,
                                 "stepCount": healthDataManager.stepCount,
-                                "stress": healthDataManager.stressLevel,
+                                "stress": healthDataManager.respiratoryRate,
                                 "temperature": healthDataManager.temperature
                             ]
                 healthdatafirebasemanager.updateData(id: documentIDManager.documentID, newdata: newData) // Use userID variable
@@ -56,7 +56,7 @@ struct newhealth: View {
                 // Print the collected data from HealthKit
                 print("Heart Rate: \(healthDataManager.heartRate)")
                 print("Step Count: \(healthDataManager.stepCount)")
-                print("Stress: \(healthDataManager.stressLevel)")
+                print("Stress: \(healthDataManager.respiratoryRate)")
                 print("Sleep: \(healthDataManager.sleepHours)")
                 print("Temperature: \(healthDataManager.temperature)")
                 print("Blood Pressure: \(healthDataManager.bloodPressureSystolic)")
