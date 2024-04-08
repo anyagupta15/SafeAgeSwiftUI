@@ -12,7 +12,7 @@ struct List2View: View {
     @State private var isShowingDialog2 = false
     @State private var showActionButtonMenu2 = false
     
-    @State private var alertDismissed2: Bool
+    @State private var alertDismissed2: Bool = UserDefaults.standard.bool(forKey: "alertDismissed2")
     
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
@@ -78,17 +78,11 @@ struct List2View: View {
                                     .padding()
                                 }
                             }
-                            // Blood Pressure
-                            
-                            
-                            // Heart Rate
-                            
                         }
                         .padding(.bottom, 15)
                         .padding([.leading, .trailing], 10) // Add padding to the sides
                         
                         HStack(spacing: 15) {
-                            // Sleep
                             VStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -118,7 +112,6 @@ struct List2View: View {
                                 }
                             }
                             
-                            // Step Count
                             VStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -150,13 +143,11 @@ struct List2View: View {
                                     .padding()
                                 }
                             }
-                            
                         }
                         .padding(.bottom, 15)
                         .padding([.leading, .trailing], 10) // Add padding to the sides
                         
                         HStack(spacing: 15) {
-                            // Stress
                             VStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -213,9 +204,6 @@ struct List2View: View {
                                     .padding()
                                 }
                             }
-                            
-                            // Temperature
-                            
                         }
                         .padding(.bottom, 30)
                         .padding([.leading, .trailing], 10) // Add padding to the sides
@@ -292,11 +280,6 @@ struct List2View: View {
         } else {
             return ""
         }
-    }
-    
-    init() {
-        // Initialize alertDismissed2 from UserDefaults
-        _alertDismissed2 = State(initialValue: UserDefaults.standard.bool(forKey: "alertDismissed2"))
     }
     
     struct List2View_Previews: PreviewProvider {
