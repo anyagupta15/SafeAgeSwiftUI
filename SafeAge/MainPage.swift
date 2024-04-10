@@ -98,11 +98,6 @@ struct MainPage: View {
 
                             VStack (alignment: .leading, spacing: 10) {
                                 HStack {
-                                    NavigationLink(destination: HeartRateHistoryView(), isActive: $showingHeartRateHistory) {
-                                        EmptyView()
-                                    }
-                                    .hidden()
-                                    Spacer()
                                     Image(systemName: "heart.circle.fill")
                                         .resizable()
                                         .frame(width: 40, height: 40)
@@ -268,7 +263,7 @@ struct MainPage: View {
                                     .font(.title3)
 
 
-                                Text("\(Int(healthDataManager.respiratoryRate))/min")
+                                Text("\(Int(healthDataManager.respiratoryRate))%")
                                     .foregroundColor(.white)
                                     .font(.title3)
                             }
@@ -334,11 +329,16 @@ struct MainPage: View {
             healthDataManager.bloodPressureDiastolic < 80 || healthDataManager.bloodPressureDiastolic > 100 ||
             healthDataManager.respiratoryRate < 11 || healthDataManager.respiratoryRate > 16 {
             isShowingDialog = true
+            SoundManager.instance.playSound()
         } else {
             isShowingDialog = false
         }
     }
-
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            SoundPlay()
+        }
+    }
 
     func formattedDate() -> String {
         let formatter = DateFormatter()
